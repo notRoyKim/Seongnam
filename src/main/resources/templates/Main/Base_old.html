@@ -1,0 +1,566 @@
+
+<style>
+    #box{
+        width:610px;
+        height:75px;
+        margin:0px auto;
+        margin-bottom:40px;
+    }
+
+    #MyLogo {
+        width:780px;
+        margin:auto;
+    }
+
+    #logo {
+        width:220px;
+        margin-top:15px;
+        float:left;
+        font-size: 40px;
+        font-weight: bold;
+        letter-spacing:-3px;
+    }
+
+    #search {
+        height:100%;
+        float:left;
+        position: relative;
+        padding-top:23px;
+        margin-left:30px;
+    }
+
+    #menu-box{
+        height:30px;
+        float:left;
+        position:relative;
+        top:41px;
+    }
+
+    .menu{
+        width:130px;
+        height:100%;
+        float:left;
+        text-align:center;
+        font-size:18px;
+        color:#124263;
+        /*font-weight:900;*/
+        cursor:pointer;
+    }
+
+    .menu span {
+        border-bottom:0px solid #3f9ebd;
+        padding-bottom:3px;
+    }
+
+    #searchbox {
+        width:300px;
+        font-size:16px;
+        color:#000000;
+        border:1px solid #DDDDDD;
+        border-right:0px solid;
+        height:32px;
+        padding-left:8px;
+        outline-style:none;
+        margin-top:-5px;
+    }
+
+    .menuOn {
+        color:#F56007;
+    }
+    .menuDivideLine{
+        font-size:14px;
+    }
+
+    #search_type {
+        margin-top:7px;
+        float:left;
+    }
+
+</style>
+<script type="text/javascript" src="/Static/js/jquery.banner.js"></script>
+
+<script type="text/javascript" src="/Static/js/jssor.js"></script>
+<script type="text/javascript" src="/Static/js/jssor.slider.js"></script>
+<script type="text/javascript" src="/Static/js/jssor.player.ytiframe.js"></script>
+
+<script>
+
+    var content_key = 1;
+
+    $( document ).ready(function() {
+        var TmpSearchKey = "";
+
+        $("#searchbox")
+            .focus(function() {
+                TmpSearchKey =  $("#searchbox").val();
+                $("#searchbox").val("");
+                console.log(TmpSearchKey);
+            })
+            .focusout(function() {
+                if ($("#searchbox").val() == "") {
+                    $("#searchbox").val(TmpSearchKey);
+                }
+            })
+            .keypress(function(event) {
+                if (event.charCode ==13) Search($("#searchbox").val(), 2);
+            });
+    });
+
+    function Search(SearchKey, SearchP) {
+        var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
+        str = SearchKey.replace(regExp,"");
+        if(str == "" || str == "아카이브즈 자료 검색"){
+            alert("검색어를 입력해주세요.");
+        }else if(str.length < 2) {
+            alert("검색어를 두 글자 이상으로 입력해 주세요.");
+
+        }else{
+            /*SearchKey= encodeURI(SearchKey);
+
+            if(SearchP == 0) path = "http://ichpedia.org/SearchResult/?sType=1&Keyword=" + SearchKey + "&searchOpt=contents&";
+            else if(SearchP == 1) path = "http://minjung20.org/NewDA/List/?key=" + SearchKey;
+            //else if(SearchP == 2) path = "http://ichpedia.org/AncientDocuments_search_result/?cate=0&key=" + SearchKey;
+            else if(SearchP == 2) path = "http://ichpedia.org/AncientSearch/?SearchType=0&SearchKey=" + SearchKey;
+            else if(SearchP == 3) path = "http://ichpedia.org/Search/?SearchKey=" + SearchKey;
+
+            window.location.href = path;*/
+
+            var ESearchKey = encodeURI(SearchKey);
+
+            var Target = "ICHPEDIA"; var TName = "무형유산";
+            if (SearchP == 2) { Target = "ARCHIVES"; TName = "아카이브즈"; }
+            else if (SearchP == 3) { Target = "ANCIENT"; TName = "고문서";}
+            //2020.03.13 수정
+            //var DataURL = "http://ichpedia.org/ICHJSon/CheckSearch/?callback=?&SearchKey=" + ESearchKey + "&Target=" + Target;
+            var DataURL ="http://ichpedia.org/ICHJSon/ArchiveSearchData/?callback=?&SearchKey="  + ESearchKey;
+
+            $.getJSON(DataURL, function(JSonData) {
+                if (JSonData.NUM == 0) alert("'" +TName + "' 에는 '" + SearchKey + "' 에 대한 자료가 없습니다.",location.reload());
+                else {
+                    if(SearchP == 1) path = "http://ichpedia.org/SearchResult/?sType=1&Keyword=" + ESearchKey + "&searchOpt=contents&";
+                    else if(SearchP == 2) path = "http://minjung20.org/NewDA/List/?key=" + ESearchKey;
+                    //else if(SearchP == 2) path = "http://ichpedia.org/AncientDocuments_search_result/?cate=0&key=" + SearchKey;
+                    else if(SearchP == 3) path = "http://ichpedia.org/AncientSearch/?SearchType=0&SearchKey=" + ESearchKey;
+                    //else if(SearchP == 3) path = "http://ichpedia.org/Search/?SearchKey=" + ESearchKey;
+                    else if(SearchP == 0) path = "http://ichpedia.org/NewSearchResult/?sType=1&Keyword=" + ESearchKey + "&searchOpt=contents&";
+                    window.location.href = path;
+                }
+            });
+        }
+    }
+</script>
+<style>
+    .search_title{
+        font-size:15px;
+        color:#f95050;
+    }
+
+    .Tables_logo {
+        border-collapse:collapse;
+        width:280px;
+        margin-top:11px;
+        text-align:center;
+    }
+
+    .search_filter_button {
+        padding:5px 8px 5px 8px;
+        border: 1px solid #DDDDDD;
+        cursor: pointer;
+        font-size: 14px;
+        height: 31px;
+    }
+
+    .search_manual {
+        width: 15px;
+        height: 15px;
+        position: relative;
+        left: 10px;
+        top: 33px;
+        color: #3f9ebd;
+        font-size: 14px;
+        z-index: 1;
+        cursor:pointer;
+    }
+
+    .search_manual img {
+        width:100%;
+        height:100%;
+    }
+    #manual_popup{
+        width: 525px;
+        height: 440px;
+        border: 1px solid #e1e1e1;
+        overflow-y: scroll;
+        background-color: white;
+        left: 579px;
+        top: 131px;
+        display: none;
+    }
+    #manual_popupX{
+        width: 49px;
+        height: 50px;
+        background-color: white;
+        left: 1032px;
+        top: 516px;
+        display:none;
+    }
+
+    @media screen and (max-width:780px) {
+        #MyLogo {
+            width: 100%;
+        }
+        #box {
+            width: 90%;
+            margin:auto;
+        }
+        #search {
+            width: 60%;
+        }
+        #searchbox {
+            width: 100%;
+        }
+        #search_type {
+            width: 30%;
+        }
+        .Tables_logo {
+            width: 100%;
+        }
+        #manual_popup {
+            display: none;
+        }
+        #manual_popupX {
+            display: none;
+        }
+        #top_history {
+            display: none;
+        }
+        .top_history_a {
+            display: none;
+        }
+    }
+
+</style>
+
+<script>
+    $( document ).ready(function() {
+        var temp = $(".search_filter_button:eq(2)");
+        $(".search_filter_button").hover(function() {
+            $(this).css("background", "#e5e5e5");
+            $(this).css("color", "#FF7600");
+        } , function(){
+            if(temp.index() == $(this).index()) return;
+            else {
+                $(this).css("background", "white");
+                $(this).css("color", "black");
+            }
+        });
+        $(".search_filter_button").click(function() {
+
+            temp = $(this);
+            console.log(temp.index());
+            Search($("#searchbox").val(), temp.index());
+
+            /*if(temp.index() != $(this).index()) {
+                temp.css("background", "white");
+            }
+            temp = $(this);
+            content_key = temp.index();
+            $("#searchbox").val(temp.attr('value'));*/
+        });
+        $(".search_filter_button:eq(2)").mouseenter();
+    });
+
+    function abspos(e){
+        this.x = e.clientX + (document.documentElement.scrollLeft?document.documentElement.scrollLeft:document.body.scrollLeft);
+        this.y = e.clientY + (document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop);
+        return this;
+    }
+
+
+    function search_popup(e)
+    {
+
+        pos = abspos(e);
+
+        $("#manual_popup").css("left", pos.x + 15 + "px");
+        $("#manual_popup").css("top", pos.y + 30 + "px");
+
+        $("#manual_popupX").css("left", pos.x +465+ "px");
+        $("#manual_popupX").css("top", pos.y +405+ "px");
+
+        $("#manual_popup").fadeIn();
+        $("#manual_popupX").fadeIn();
+    }
+    function search_popupX()
+    {
+        $("#manual_popup").fadeOut();
+        $("#manual_popupX").fadeOut();
+
+    }
+</script>
+
+<div id="top_wrap">
+    <div id = "manual_popup" style="position:absolute;z-index:1;text-align:center"><br>
+
+        <p class="search_title">OR검색 (A와 B또는 두 단어 모두 포함)</p>
+        계원 별신굿 , 계원 OR 별신굿 <br><br>
+
+        <p class="search_title">AND검색 (A와 B를 동시에 포함)</p>
+        계원 AND 별신굿<br><br>
+
+        <p class="search_title">동시검색</p>
+        (악기장 AND 최동식) OR (계원 AND 별신굿)<br><br>
+
+        <p class="search_title">필드검색 (제목이나 본문에서 검색)</p>
+        Title:계원 별신굿<br>
+        Writer:이지호<br>
+        Contents:별신굿<br><br>
+
+        <p class="search_title">필드동시검색</p>
+        Title:악기장 -Contents:최동식<br>(제목은 악기장, 본문내용은 최동식으로 검색)<br><br>
+
+        <p class="search_title">유사단어검색</p>
+        굿놀이~ (굿놀이와 비슷한 단어도 검색)<br><br>
+
+        <p class="search_title">근접검색</p>
+        "계원 별신굿"~5<br>
+        (계원과 별신굿 사이의 단어가 5개 이내로 검색)<br><br>
+
+        <p class="search_title">단어시작부분검색</p>
+        줄다리기*<br>
+        (단어가 줄다리기~로 시작하는 검색)<br><br>
+
+    </div>
+
+    <div id = "manual_popupX" onclick="search_popupX()"  style="position:absolute;z-index:1; cursor:pointer"><img src="/Static/close_button.png" style="width:100%; height:100%;"></div>
+    <div id = "top_history"></div>
+
+    {% if Session == -1 %}
+    <a class="top_history_a" href="" target="_blank" style="float:right; margin-top:20px;" onclick="click_login('loginview'); return false;">로그인 | 회원가입</a>
+    {% else %}
+    <a class="top_history_a" href="/NewDA/logout_process/" target="_blank" style="float:right; margin-top:20px;">|ㅤ로그아웃</a>
+    <a class="top_history_a" style="float:right; margin-top:20px;">{{Session.1}} 님 환영합니다.ㅤ</a>
+    {% endif %}
+
+
+    <!-- meta file 확인 페이지 -->
+    {% if Session.0 == "subeen030" %}
+    <a class="top_history_a" href="/NewDA/checkfile/" target="_blank" style="float:right; margin-top:20px; margin-right:30px;">파일확인</a>
+    {% endif %}
+    <!-- 끝 -->
+
+    {% if Session != -1 %}
+    <a class="top_history_a" href="http://minjung20.org/DigitalArchivesData/DataWrite?user_name={{Session.1}}&user_id={{Session.0}}" target="_blank" style="float:right; margin-top:20px; margin-right:30px;">자료 업로드</a>
+    {% endif %}
+
+    <a class="top_history_a" href="http://www.ichpedia.org/data_reading/" target="_blank" style="float:right; margin-top:20px; margin-right:30px;">자료 열람 및 사용 안내</a>
+
+    {% if Page != "List" and Page != "CList" and Page != "TList" %}
+    <div id = "top_block">
+        <div id = "top_block_wrap">
+            <div style="width:100%;text-align:center;">
+                <div style = "height:5px;"></div>
+                <div id = "MyLogo">
+                    <div id="box">
+                        <a><div class="search_manual" onclick="search_popup(event)"><img src="/Static/settings (2).png"/></div></a>
+                        <div id="search" align = "right">
+                            <input id = "searchbox" type="text" name="search" value="{% if SearchKey %}{{SearchKey}}{% else %}아카이브즈 자료 검색{% endif %}" />
+                        </div>
+                        <div id="search_type">
+                            <table class = "Tables_logo">
+                                <tr>
+                                    <td class="search_filter_button" value="전체검색">전체</td>
+                                    <td class="search_filter_button" value="무형유산 자료 검색">무형유산</td>
+                                    <td class="search_filter_button" value="아카이브즈 자료 검색">아카이브즈</td>
+                                    <td class="search_filter_button" value="고문서 자료 검색">고문서</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div id = "top_logobox">
+                    <a href = "/"><img src = "/Static/NewDigitalArchives/img/logo5.png" style = "width : 200px;"></a>
+                </div> -->
+
+                <!-- <div id = "top_logotext"> 아카이브즈 </div>
+                <div id = "top_searchbox">
+                    <!-- <div id = "Search_Button"><button value="검색" id = "Main_Button">검색</button></div>
+                    <div id = "Search_Box"><input type="text" value="{{SearchKey}}"  id = "Main_Input"></div>
+
+                    <!-- <div id = "Search_Button"></div>
+             </div> -->
+
+            </div>
+            <!--
+            <DIV id = "MENU">
+                <DIV id = "INTRODUCE" class = "MENUBOX" num = "1"><DIV class = "MENUTEXT">Collection</DIV>
+                    <ul id = "SUBMENU1" class = "SUBMENU">
+                        <a href = "/NewDA/CSearchList/?key=0"><li>강신표</li></a>
+                        <a href = "/NewDA/CSearchList/?key=1"><li>정진국</li></a>
+                    </ul>
+                </DIV>
+                <DIV id = "COMMUNITY" class = "MENUBOX" num = "2">
+                    <DIV class = "MENUTEXT">Themes</DIV>
+                    <ul id = "SUBMENU2" class = "SUBMENU">
+                        <a href = "/NewDA/TSearchList/?key=0"><li>3ㆍ1절</li></a>
+                        <a href = "/NewDA/TSearchList/?key=1"><li>6ㆍ25</li></a>
+                        <a href = "/NewDA/TSearchList/?key=1"><li>8ㆍ15</li></a>
+                        <a href = "/NewDA/TSearchList/?key=1"><li>설 날</li></a>
+                        <a href = "/NewDA/TSearchList/?key=1"><li>추 석</li></a>
+                        <a href = "/NewDA/TSearchList/?key=1"><li>겨 울</li></a>
+                    </ul>
+                </DIV>
+            </DIV>
+            -->
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $(".MENUBOX").hover(function(){
+                var abc = $(this).attr("num");
+
+                $("#SUBMENU" + abc).slideToggle("fast");
+            });
+
+            $("#Main_Input")
+                .focus(function() {
+                    $("#Main_Input").val("");
+                })
+                .focusout(function() {
+                    if ($("#Main_Input").val() == "") {
+                        $("#Main_Input").val("아카이브즈 자료 검색");
+                    }
+                })
+                .keypress(function(event) {
+                    if (event.charCode ==13) {
+                        GoSearch($('#Main_Input').val());
+                    }
+                });
+
+            $("#Main_Button").click(function(){
+                GoSearch($('#Main_Input').val());
+            });
+
+        });
+
+        function GoSearch(SearchKey) {
+            var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
+            str = SearchKey.replace(regExp,"");
+            if(str == "") { alert("검색어를 입력해주세요."); }
+            else {
+                path = "/NewDA/List/?key=" + encodeURI(SearchKey);
+                post_to_url(path,{'key': encodeURI(SearchKey)});
+            }
+            $('#SideBar_Input').val(str);
+        }
+
+        function post_to_url(path, params) {
+
+            method = "post";  //method 부분은 입력안하면 자동으로 post가 된다.
+
+            var form = document.createElement("form");
+
+            form.setAttribute("method", method);
+            form.setAttribute("action", path);
+
+            for(var key in params) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+                form.appendChild(hiddenField);
+            }
+
+            document.body.appendChild(form);
+
+            form.submit();
+
+        }
+
+
+    </script>
+
+
+    <!----로그인----->
+    <script type="text/javascript" language="javascript">
+        function click_login(id){
+            var objdiv=document.getElementById(id);
+
+            if(objdiv.style.display=="block"){
+                objdiv.style.display="none";
+            }
+            else{
+                objdiv.style.display="block"
+            }
+        }
+
+        function formcheck(){
+            if(document.user_info.id.value ==""){
+                alert("아이디를 입력해 주세요.");
+                return false;
+            }
+            if(document.user_info.passwd.value==""){
+                alret("비밀번호를 입력해 주세요.");
+                return false;
+            }
+        }
+
+    </script>
+
+
+    <form name="user_info" method="POST" action="/NewDA/login_process/" enctype="multipart/form-data" onsubmit="formcheck()"; return false;>
+        <div id="loginview" class="blackLightbox">
+            <div class="login_main">
+                <div style="text-align:right;">
+                    <a href="" onclick="click_login('loginview'); return true;"><img src="/Static/Images/close.png" style="width:20px; height:20px;"></a>
+                </div>
+                <div class="top_context"; style="font-size:35px; margin-bottom:60px; text-align:center"><font color="#003397b"><b>LOGIN</b><font>
+                </div>
+                <table align="center" style="width:90%; margin-left:32px; margin-bottom:10px;">
+                    <tr>
+                        <td><span style="font-weight:bold; margin-bottom:13px; font-size:18px;">아이디</span></td>
+                        <td><span style="font-weight:bold; margin-bottom:13px; font-size:18px;">비밀번호</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input_content" name="mem_id"></td>
+                        <td><input type="password" class="input_content" name="mem_pw"</td>
+                    </tr>
+                </table>
+                <center style="width:50%; margin-left:140px; border:2px solid #003397b;">
+                    <button type="submit" style="height:45px; width:100px; height:35px; margin-top:10px; background:64A0FF; text-align:center; text-weight:bold; font-size: 15px; margin-right:30px; cursor:pointer; "><font size="3" color="003397b"><b>로그인</b></button>
+                </center>
+                <br><br><span style="font-size:15px; margin-left:30px;">*아이디와 비밀번호는 ICHPEDIA와 동일합니다.(2019.11)</span><br>
+                <span style="font-size:15px; margin-left:30px;">*아이디/비밀번호 찾기와 회원가입은 ICHPEDIA 홈페이지로 이동하세요.</span><br>
+                <a href="http://www.ichpedia.org" style="font-size:15px; margin-left:30px;" target="_blank">www.ichpedia.org</a>
+            </div>
+        </div>
+    </form>
+
+
+
+
+    <style type="text/css">
+
+        a { text-decoration:none; color:black; }
+
+        .input_content { width:95%; height:45px; font-size:17px;	padding:7px; }
+
+        .blackLightbox {
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed; left: 0; top: 0; z-index: 2; display:none; filter: alpha(opacity=70);
+            margin: 0px auto;
+        }
+        .login_main {
+            visibility: visible;
+            top: 180px; position:absolute; height: 420px; z-index: 3; padding:20px; background:white;
+            border-radius:20px 0 20px 0;
+            margin-left: 35%;
+            text-align:left;
+        }
+    </style>
