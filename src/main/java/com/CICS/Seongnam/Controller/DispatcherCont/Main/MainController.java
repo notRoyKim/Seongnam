@@ -14,14 +14,7 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView base(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
-
+        mv.setViewName("Main/Base");
         return mv;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(HttpServletRequest request) {
-        String hello = "hello world";
-        return hello;
     }
 }

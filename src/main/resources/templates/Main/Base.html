@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<HTML LANG="KR">
+<head>
+    <TITLE> 무형문화연구소 - 디지털 아카이브즈 </TITLE>
+    <link href="/Static/DigitalArchives/Images/ICons/Archives_Icon.ico" rel="shortcut icon">
+    <link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=UTF-8">
+</head>
+<body>
+<div ID = "MAINBASE">
+    <div id = "header">
+        <div id="top_history">
+            <a class="top_history_a" href="http://ichpedia.org/">
+                <img src="Image/gohome.png" class="gohomebt">
+            </a>
+            <div class="history_nonimg" stlye="padding-bottom : 40px">
+                <div class="header_blank_dot">·</div>
+                <a class="top_history_a" href="/">아카이브즈</a>
+            </div>
+        </div>
+        <a class="top_history_a top_login_btn" href="" target="_blank" onclick="click_login('loginview'); return false;">
+            로그인 | 회원가입
+        </a>
+        <a class="top_history_a file_use_guide" href="http://www.ichpedia.org/data_reading/" target="_blank">
+            자료 열람 및 사용 안내
+        </a>
+    </div>
+    <div id="content">
+
+    </div>
+    <div id="footer">
+
+    </div>
+    <script type="text/javascript" language="javascript">
+        function click_login(id){
+            var objdiv=document.getElementById(id);
+
+            if(objdiv.style.display=="block"){
+                objdiv.style.display="none";
+            }
+            else{
+                objdiv.style.display="block"
+            }
+        }
+
+        function formcheck(){
+            if(document.user_info.id.value ==""){
+                alert("아이디를 입력해 주세요.");
+                return false;
+            }
+            if(document.user_info.passwd.value==""){
+                alret("비밀번호를 입력해 주세요.");
+                return false;
+            }
+        }
+
+    </script>
+
+
+    <form name="user_info" method="POST" action="/NewDA/login_process/" enctype="multipart/form-data" onsubmit="formcheck()"; return false;>
+        <div id="loginview" class="blackLightbox">
+            <div class="login_main">
+                <div style="text-align:right;">
+                    <a href="" onclick="click_login('loginview'); return true;">
+                        <img src="/Static/Images/close.png" style="width:20px; height:20px;">
+                    </a>
+                </div>
+                <div class="top_context"; style="font-size:35px; margin-bottom:60px; text-align:center">
+                    <span style="color: #003397;">
+                        <b>LOGIN</b>
+                    </span>>
+                </div>
+                <table align="center" style="width:90%; margin-left:32px; margin-bottom:10px;">
+                    <tr>
+                        <td><span style="font-weight:bold; margin-bottom:13px; font-size:18px;">아이디</span></td>
+                        <td><span style="font-weight:bold; margin-bottom:13px; font-size:18px;">비밀번호</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input_content" name="mem_id"></td>
+                        <td><input type="password" class="input_content" name="mem_pw"</td>
+                    </tr>
+                </table>
+                <div style="width:50%; margin-left:140px; border:2px solid #003397; text-align: center;">
+                    <button type="submit" style="height:45px; width:100px; height:35px; margin-top:10px; background:#64A0FF; text-align:center; text-weight:bold; font-size: 15px; margin-right:30px; cursor:pointer; ">
+                        <span size="3" color="003397b"><b>로그인</b></span>
+                    </button>
+                </div>
+                <br><br><span style="font-size:15px; margin-left:30px;">*아이디와 비밀번호는 ICHPEDIA와 동일합니다.(2019.11)</span><br>
+                <span style="font-size:15px; margin-left:30px;">*아이디/비밀번호 찾기와 회원가입은 ICHPEDIA 홈페이지로 이동하세요.</span><br>
+                <a href="http://www.ichpedia.org" style="font-size:15px; margin-left:30px;" target="_blank">www.ichpedia.org</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+
+<style>
+    .gohomebt {
+        width: 32px;
+        height: 32px;
+        float: left;
+        opacity: 0.6;
+    }
+    #top_history {
+        margin-bottom: 10px;
+        float: left;
+        padding-top: 12px;
+        margin-left: 34px;
+        line-height: 30px;
+        font-weight: bold;
+        color: #841A1C;
+        font-family: 'Nanum Gothic';
+        font-size: 11px;
+    }
+    .top_history_a {
+        color: #841A1C;
+        font-family: 'Nanum Gothic';
+        font-size: 11px;
+        height: 40px;
+        float: left;
+    }
+    html, body {
+        margin : 0px;
+        width : 100%;
+        min-height: 100%;
+    }
+    #header {
+        width : 100%;
+        height : 120px;
+        /*background-color: grey;*/
+    }
+    .history_nonimg {
+        float: left;
+    }
+    .header_blank_dot {
+        margin: 0 10px 0 10px;
+        float: left;
+    }
+    .top_history_a {
+        float: left;
+    }
+    #MAINBASE {
+        max-width : 1140px;
+        margin : auto;
+        background-color: white;
+    }
+    .file_use_guide {
+        float:right; margin-top:20px; margin-right:30px;
+    }
+    a {
+        text-decoration: none;
+    }
+    a:visited {
+        text-decoration: none;
+    }
+    .top_login_btn {
+        float:right;
+        margin-top:20px;
+    }
+    .input_content { width:95%; height:45px; font-size:17px;	padding:7px; }
+
+    .blackLightbox {
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed; left: 0; top: 0; z-index: 2; display:none; filter: alpha(opacity=70);
+        margin: 0px auto;
+    }
+    .login_main {
+        visibility: visible;
+        top: 180px; position:absolute; height: 420px; z-index: 3; padding:20px; background:white;
+        border-radius:20px 0 20px 0;
+        margin-left: 35%;
+        text-align:left;
+    }
+    .search_title{
+        font-size:15px;
+        color:#f95050;
+    }
+
+    .Tables_logo {
+        border-collapse:collapse;
+        width:280px;
+        margin-top:11px;
+        text-align:center;
+    }
+
+    .search_filter_button {
+        padding:5px 8px 5px 8px;
+        border: 1px solid #DDDDDD;
+        cursor: pointer;
+        font-size: 14px;
+        height: 31px;
+    }
+
+    .search_manual {
+        width: 15px;
+        height: 15px;
+        position: relative;
+        left: 10px;
+        top: 33px;
+        color: #3f9ebd;
+        font-size: 14px;
+        z-index: 1;
+        cursor:pointer;
+    }
+
+    .search_manual img {
+        width:100%;
+        height:100%;
+    }
+    #manual_popup{
+        width: 525px;
+        height: 440px;
+        border: 1px solid #e1e1e1;
+        overflow-y: scroll;
+        background-color: white;
+        left: 579px;
+        top: 131px;
+        display: none;
+    }
+    #manual_popupX{
+        width: 49px;
+        height: 50px;
+        background-color: white;
+        left: 1032px;
+        top: 516px;
+        display:none;
+    }
+
+    @media screen and (max-width:780px) {
+        #MyLogo {
+            width: 100%;
+        }
+        #box {
+            width: 90%;
+            margin:auto;
+        }
+        #search {
+            width: 60%;
+        }
+        #searchbox {
+            width: 100%;
+        }
+        #search_type {
+            width: 30%;
+        }
+        .Tables_logo {
+            width: 100%;
+        }
+        #manual_popup {
+            display: none;
+        }
+        #manual_popupX {
+            display: none;
+        }
+        #top_history {
+            display: none;
+        }
+        .top_history_a {
+            display: none;
+        }
+    }
+    #box{
+        width:610px;
+        height:75px;
+        margin:0px auto;
+        margin-bottom:40px;
+    }
+
+    #MyLogo {
+        width:780px;
+        margin:auto;
+    }
+
+    #logo {
+        width:220px;
+        margin-top:15px;
+        float:left;
+        font-size: 40px;
+        font-weight: bold;
+        letter-spacing:-3px;
+    }
+
+    #search {
+        height:100%;
+        float:left;
+        position: relative;
+        padding-top:23px;
+        margin-left:30px;
+    }
+
+    #menu-box{
+        height:30px;
+        float:left;
+        position:relative;
+        top:41px;
+    }
+
+    .menu{
+        width:130px;
+        height:100%;
+        float:left;
+        text-align:center;
+        font-size:18px;
+        color:#124263;
+        /*font-weight:900;*/
+        cursor:pointer;
+    }
+
+    .menu span {
+        border-bottom:0px solid #3f9ebd;
+        padding-bottom:3px;
+    }
+
+    #searchbox {
+        width:300px;
+        font-size:16px;
+        color:#000000;
+        border:1px solid #DDDDDD;
+        border-right:0px solid;
+        height:32px;
+        padding-left:8px;
+        outline-style:none;
+        margin-top:-5px;
+    }
+
+    .menuOn {
+        color:#F56007;
+    }
+    .menuDivideLine{
+        font-size:14px;
+    }
+
+    #search_type {
+        margin-top:7px;
+        float:left;
+    }
+</style>
+
+</HTML>
