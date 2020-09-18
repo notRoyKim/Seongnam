@@ -44,21 +44,23 @@
         <div id="manual_popupX" onclick="search_popupX()" style="position:absolute;z-index:1; cursor:pointer">
             <img src="/Static/close_button.png" style="width:100%; height:100%;">
         </div>
-        <div id="top_history">
-            <a class="top_history_a" href="http://ichpedia.org/">
-                <img src="Image/gohome.png" class="gohomebt">
-            </a>
-            <div class="history_nonimg" stlye="padding-bottom : 40px">
-                <div class="header_blank_dot">·</div>
-                <a class="top_history_a" href="/">아카이브즈</a>
+        <div class="header_link">
+            <div id="top_history">
+                <a class="top_history_a" href="http://ichpedia.org/">
+                    <img src="Image/gohome.png" class="gohomebt">
+                </a>
+                <div class="history_nonimg" stlye="padding-bottom : 40px">
+                    <div class="header_blank_dot">·</div>
+                    <a class="top_history_a" href="/">아카이브즈</a>
+                </div>
             </div>
+            <a class="top_history_a top_login_btn" href="" target="_blank" onclick="click_login('loginview'); return false;">
+                로그인 | 회원가입
+            </a>
+            <a class="top_history_a file_use_guide" href="http://www.ichpedia.org/data_reading/" target="_blank">
+                자료 열람 및 사용 안내
+            </a>
         </div>
-        <a class="top_history_a top_login_btn" href="" target="_blank" onclick="click_login('loginview'); return false;">
-            로그인 | 회원가입
-        </a>
-        <a class="top_history_a file_use_guide" href="http://www.ichpedia.org/data_reading/" target="_blank">
-            자료 열람 및 사용 안내
-        </a>
         <!--검색 부분-->
         <div id="top_block">
             <div id="top_block_wrap">
@@ -84,8 +86,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
     <div id="content">
 
@@ -185,13 +187,21 @@
     }
     html, body {
         margin : 0px;
+        padding: 0px;
         width : 100%;
         min-height: 100%;
     }
+    div {
+        overflow: hidden;
+        height: auto;
+    }
     #header {
         width : 100%;
-        height : 120px;
-        /*background-color: grey;*/
+    }
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
     .history_nonimg {
         float: left;
@@ -403,6 +413,10 @@
         width: 100%;
         text-align: center;
         max-width: 1140px;
+    }
+    .header_link {
+        overflow:auto;
+        width: 100%;
     }
 </style>
 
