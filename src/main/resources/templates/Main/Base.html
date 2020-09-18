@@ -5,6 +5,13 @@
     <link href="/Static/DigitalArchives/Images/ICons/Archives_Icon.ico" rel="shortcut icon">
     <link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href="/CSS/base_top.css" rel="stylesheet" type="text/css">
+
+    <!--bxslider-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
     <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=UTF-8">
 </head>
 <body>
@@ -90,7 +97,117 @@
 
     </div>
     <div id="content">
+        <!-- slider -->
+        <!-- db연동과 랜덤 불러오기 작업 필요 -->
+        <ul class="bxslider">
+            <li>
+                <div class="slider_card card_left">
+                    <img src="/Image/2-01-LH-04092004-김상옥-0001.jpg">
+                </div>
+                <div class="slider_card card_right">
+                    <div class="card_title">
+                        김O옥의 구술생애사
+                    </div>
+                    <hr class="card_hr">
+                    <div class="card_content">
+                        점포에서의 제보자 모습
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slider_card card_left">
+                    <img src="/Image/2-03LH01022005이정옥0024.jpg">
+                </div>
+                <div class="slider_card card_right">
+                    <div class="card_title">
+                        이정옥의 구술 생애사
+                    </div>
+                    <hr class="card_hr">
+                    <div class="card_content">
+                        이정옥 큰아들 임환기 결혼사진
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slider_card card_left">
+                    <img src="/Image/2-05LH18042008MARHBY0007.jpg">
+                </div>
+                <div class="slider_card card_right">
+                    <div class="card_title">
+                        하봉연의 구술생애사
+                    </div>
+                    <hr class="card_hr">
+                    <div class="card_content">
+                        신녕장과 하봉연의 가게
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slider_card card_left">
+                    <img src="/Image/2-05LH14022003IYHRDR0007.jpg">
+                </div>
+                <div class="slider_card card_right">
+                    <div class="card_title">
+                        류두루의 구술생애사
+                    </div>
+                    <hr class="card_hr">
+                    <div class="card_content">
+                        안동 하회출신의 양반집 딸의 혼인과 6.25 피난 체험 및 당시 성주 사람들의 양반에 대한 의식
+                    </div>
+                </div>
+            </li>
+        </ul>
 
+        <style>
+            .bxslider {
+                width:100%;
+            }
+            .bxslider li{
+                height: 400px;
+            }
+            .slider_card {
+                height: 100%;
+                width: 50%;
+                float: left;
+            }
+            .card_left img{
+                margin-left: 10%;
+                height: 90%;
+                width: auto;
+                vertical-align: middle;
+            }
+            .card_title {
+                width: 100%;
+                float: left;
+                height: 49px;
+                font-size: 20px;
+                font-weight: 700;
+                margin-left: 20px;
+                margin-top: 90px;
+                color: #777777;
+            }
+            .card_hr {
+                float: left;
+                width: calc(100% - 80px);
+                height: 2px;
+                margin-left: 20px;
+                border-bottom: 2px solid #555555;
+            }
+            .card_content {
+                width: calc(100% - 60px);
+                float: left;
+                height: 349px;
+                margin: 20px 20px 20px 20px;
+                text-align: justify;
+            }
+        </style>
+        <script type="text/javascript">
+            //<![CDATA[
+            $(document).ready(function() {
+                $('.bxslider').bxSlider();
+            });
+            //]]>
+        </script>
     </div>
     <div id="footer">
 
@@ -142,7 +259,7 @@
                     </tr>
                     <tr>
                         <td><input type="text" class="input_content" name="mem_id"></td>
-                        <td><input type="password" class="input_content" name="mem_pw"</td>
+                        <td><input type="password" class="input_content" name="mem_pw"></td>
                     </tr>
                 </table>
                 <div style="width:50%; margin-left:140px; border:2px solid #003397; text-align: center;">
@@ -159,265 +276,5 @@
     <!--로그인 폼 끝-->
 </div>
 </body>
-
-<style>
-    .gohomebt {
-        width: 32px;
-        height: 32px;
-        float: left;
-        opacity: 0.6;
-    }
-    #top_history {
-        margin-bottom: 10px;
-        float: left;
-        padding-top: 12px;
-        margin-left: 34px;
-        line-height: 30px;
-        font-weight: bold;
-        color: #841A1C;
-        font-family: 'Nanum Gothic';
-        font-size: 11px;
-    }
-    .top_history_a {
-        color: #841A1C;
-        font-family: 'Nanum Gothic';
-        font-size: 11px;
-        height: 40px;
-        float: left;
-    }
-    html, body {
-        margin : 0px;
-        padding: 0px;
-        width : 100%;
-        min-height: 100%;
-    }
-    div {
-        overflow: hidden;
-        height: auto;
-    }
-    #header {
-        width : 100%;
-    }
-    * {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-    .history_nonimg {
-        float: left;
-    }
-    .header_blank_dot {
-        margin: 0 10px 0 10px;
-        float: left;
-    }
-    .top_history_a {
-        float: left;
-    }
-    #MAINBASE {
-        max-width : 1140px;
-        margin : auto;
-        background-color: white;
-    }
-    .file_use_guide {
-        float:right; margin-top:20px; margin-right:30px;
-    }
-    a {
-        text-decoration: none;
-    }
-    a:visited {
-        text-decoration: none;
-    }
-    .top_login_btn {
-        float:right;
-        margin-top:20px;
-    }
-    .input_content { width:95%; height:45px; font-size:17px;	padding:7px; }
-
-    .blackLightbox {
-        width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        position: fixed; left: 0; top: 0; z-index: 2; display:none; filter: alpha(opacity=70);
-        margin: 0px auto;
-    }
-    .login_main {
-        visibility: visible;
-        top: 180px; position:absolute; height: 420px; z-index: 3; padding:20px; background:white;
-        border-radius:20px 0 20px 0;
-        margin-left: 35%;
-        text-align:left;
-    }
-    .search_title{
-        font-size:15px;
-        color:#f95050;
-    }
-
-    .Tables_logo {
-        border-collapse:collapse;
-        width:280px;
-        margin-top:11px;
-        text-align:center;
-    }
-
-    .search_filter_button {
-        padding:5px 8px 5px 8px;
-        border: 1px solid #DDDDDD;
-        cursor: pointer;
-        font-size: 14px;
-        height: 31px;
-    }
-
-    .search_manual {
-        width: 15px;
-        height: 15px;
-        position: relative;
-        left: 10px;
-        top: 33px;
-        color: #3f9ebd;
-        font-size: 14px;
-        z-index: 1;
-        cursor:pointer;
-    }
-
-    .search_manual img {
-        width:100%;
-        height:100%;
-    }
-    #manual_popup{
-        width: 525px;
-        height: 440px;
-        border: 1px solid #e1e1e1;
-        overflow-y: scroll;
-        background-color: white;
-        left: 579px;
-        top: 131px;
-        display: none;
-    }
-    #manual_popupX{
-        width: 49px;
-        height: 50px;
-        background-color: white;
-        left: 1032px;
-        top: 516px;
-        display:none;
-    }
-
-    @media screen and (max-width:780px) {
-        #MyLogo {
-            width: 100%;
-        }
-        #box {
-            width: 90%;
-            margin:auto;
-        }
-        #search {
-            width: 60%;
-        }
-        #searchbox {
-            width: 100%;
-        }
-        #search_type {
-            width: 30%;
-        }
-        .Tables_logo {
-            width: 100%;
-        }
-        #manual_popup {
-            display: none;
-        }
-        #manual_popupX {
-            display: none;
-        }
-        #top_history {
-            display: none;
-        }
-        .top_history_a {
-            display: none;
-        }
-    }
-    #box{
-        width:610px;
-        height:75px;
-        margin:0px auto;
-        margin-bottom:40px;
-    }
-
-    #MyLogo {
-        width:780px;
-        margin:auto;
-    }
-
-    #logo {
-        width:220px;
-        margin-top:15px;
-        float:left;
-        font-size: 40px;
-        font-weight: bold;
-        letter-spacing:-3px;
-    }
-
-    #search {
-        height:100%;
-        float:left;
-        position: relative;
-        padding-top:23px;
-        margin-left:30px;
-    }
-
-    #menu-box{
-        height:30px;
-        float:left;
-        position:relative;
-        top:41px;
-    }
-
-    .menu{
-        width:130px;
-        height:100%;
-        float:left;
-        text-align:center;
-        font-size:18px;
-        color:#124263;
-        /*font-weight:900;*/
-        cursor:pointer;
-    }
-
-    .menu span {
-        border-bottom:0px solid #3f9ebd;
-        padding-bottom:3px;
-    }
-
-    #searchbox {
-        width:300px;
-        font-size:16px;
-        color:#000000;
-        border:1px solid #DDDDDD;
-        border-right:0px solid;
-        height:32px;
-        padding-left:8px;
-        outline-style:none;
-        margin-top:-5px;
-    }
-
-    .menuOn {
-        color:#F56007;
-    }
-    .menuDivideLine{
-        font-size:14px;
-    }
-
-    #search_type {
-        margin-top:7px;
-        float:left;
-    }
-    #top_block {
-        width: 100%;
-        text-align: center;
-        max-width: 1140px;
-    }
-    .header_link {
-        overflow:auto;
-        width: 100%;
-    }
-</style>
 
 </HTML>
