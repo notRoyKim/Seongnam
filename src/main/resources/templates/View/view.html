@@ -53,6 +53,103 @@
             font-size: 32px;
             color: #0D47A1;
         }
+        #Content {
+            width: 100%;
+            max-width: 1140px;
+            margin: auto;
+        }
+        .LineInContents {
+            width: 98%;
+            min-height: 50px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            margin-left: 1%;
+            margin-right: 1%;
+            border-bottom: 1px solid #AAAAAA;
+            clear: both;
+            overflow: hidden;
+            line-height: 160%;
+        }
+        .TitleInLineInContents {
+            width: 180px;
+            font-size: 16px;
+            font-weight: 600;
+            float: left;
+            color: #212121;
+            padding-left: 3px;
+        }
+        .ContentsInLineInContents {
+            width: -webkit-calc(100% - 250px);
+            width: calc(100% - 250px);
+            float: left;
+            display: block;
+            text-align: justify;
+            color: #212121;
+        }
+        .SmallTitle {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        .LineInShare {
+            width: 100%;
+            height: 50px;
+            margin-top: 30px;
+        }
+        .share_wrapper {
+            margin: 0px auto;
+            width: 112px;
+            height: 40px;
+            overflow: visible;
+            text-align: center;
+        }
+        .btn_print {
+            width: 24px;
+            height: 24px;
+            float: left;
+            cursor: pointer;
+            position: relative;
+            background: white;
+            margin-right: 10px;
+        }
+        .btn_container {
+            width: 24px;
+            height: 24px;
+            float: left;
+            cursor: pointer;
+            position: relative;
+            z-index: 100;
+            background: white;
+        }
+        .sharebutton {
+            width: 24px;
+            height: auto;
+            max-height: 24px;
+            border-radius: 5px;
+        }
+        #btn_facebook.move {
+            -webkit-transform: translate(27px, 0px);
+            transform: translate(27px, 0px);
+        }
+        #btn_twitter.move {
+            -webkit-transform: translate(54px, 0px);
+            transform: translate(54px, 0px);
+        }
+        .btn_share {
+            width: 24px;
+            height: 24px;
+            float: left;
+            cursor: pointer;
+            position: relative;
+            z-index: 50;
+            -webkit-transform: translate(0, 0);
+            -webkit-transition: -webkit-transform 500ms;
+            transform: translate(0, 0);
+            transition: transform 500ms;
+        }
+        .imgbox {
+            margin-bottom: 35px;
+        }
     </style>
 </head>
 <body>
@@ -149,6 +246,178 @@
                 jssor_1_slider_init();
             </script>
         </div>
+        <div id="Content">
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">제목</div>
+                <div class="ContentsInLineInContents">
+                    김길련님의 구술생애사
+                </div>
+            </div>
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">주요내용</div>
+                <div class="ContentsInLineInContents">
+                    1. 김길련씨 집 거실에 있는 연탄 난로<br>2. 김길련씨가 직접 종이로 만든 받침대<br>3. 김길련씨 집 마당에 쌓아놓은 연탄
+                </div>
+            </div>
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">자료배경</div>
+                <div class="ContentsInLineInContents">
+                    김길련은 1921년 평북 강계 시중면에서 개성김씨 종가집의 8남매 중 막내딸로 태어났다. 18세에 어려면의 한 지주가의 넷째 아들과 결혼을 하였다. 해방이 되자 북한정권의 지주에 대한 박해로 1946년 남편, 장녀, 시동생과 함께 서울로 남하하였다. 서울 신당동에서 살다가 한국전쟁을 당해 부산으로 피난 갔다가 수복 후 서울로 올라와서 오남매를 낳고 살았다. 상계동에서 아이들을 모두 결혼시키고 남편이 죽은 뒤 10년 전부터 장남가족과 함께 살고 있다.
+                </div>
+            </div>
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">자료정보</div>
+                <div class="ContentsInLineInContents">
+                    <div>
+                        <span class="SmallTitle">제작자</span> :
+                        <span class="SmallContents">윤택림</span>
+                    </div>
+
+
+                    <div>
+                        <span class="SmallTitle">제보자</span> :
+                        <span class="SmallContents">김길련</span>
+                    </div>
+
+                    <div>
+                        <span class="SmallTitle">제작년월일</span> :
+                        <span class="SmallContents">2008.03.06</span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">자료제작기관</span> :
+                        <span class="SmallContents">20세기민중생활사연구회</span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">자료번호</span> :
+                        <span class="SmallContents">2-01LH22112007YTLGGL0005</span>
+                    </div>
+                </div>
+            </div>
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">과제정보</div>
+                <div class="ContentsInLineInContents">
+                    <div>
+                        <span class="SmallTitle">과제기간</span> :
+                        <span class="SmallContents">2006. 12. 1 ~ 2008. 11. 30</span>
+                    </div>
+
+
+                    <div>
+                        <span class="SmallTitle">과제명</span> :
+                        <span class="SmallContents">가까운 옛날 : 민중생활사의 기록과 해설</span>
+                    </div>
+
+
+                    <div>
+                        <span class="SmallTitle">과제기관</span> :
+                        <span class="SmallContents">교육인적자원부 영남대학교</span>
+                    </div>
+                </div>
+            </div>
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">기록정보</div>
+                <div class="ContentsInLineInContents">
+                    <div>
+                        <span class="SmallTitle">기록형식</span> :
+                        <span class="SmallContents">JPG</span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">기록언어</span> :
+                        <span class="SmallContents">한국어</span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">기록형태</span> :
+                        <span class="SmallContents">이미지</span>
+                    </div>
+                </div>
+            </div>
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">자료출처 · 저작권</div>
+                <div class="ContentsInLineInContents">
+                    이 자료의 저작권은 20세기민중생활사연구회에 있으며, 문서로 된 동의 없이 무단으로 복제, 배포 및 사용할 수 없습니다.
+                </div>
+            </div>
+
+        </div>
+        <div class="LineInShare">
+            <div class="share_wrapper">
+                <div class="btn_print">
+                    <img class="sharebutton" src="/Image/print.png" onclick="PagePrint(); return false;">
+                </div>
+                <div class="btn_container">
+                    <img class="sharebutton" src="/Image/share_button.png">
+                </div>
+                <div class="btn_share" id="btn_facebook" onclick="share_facebook()">
+                    <img class="sharebutton" src="/Image/share_facebook.png">
+                </div>
+                <div class="btn_share" id="btn_twitter" onclick="share_twitter()">
+                    <img class="sharebutton" src="/Image/share_twitter.png">
+                </div>
+
+                <span class="share_txt tog">* 공유시 사진 자료가 보이지 않을 경우, 잠시 후 다시 시도하시기 바랍니다.</span>
+
+            </div>
+        </div>
+        <div class="Footer">
+            <div class="footer-wrap">
+                <font color="#A4A4A4">
+                    <div id="Footer-text" style="font-size: 17px;">
+                        54896 전북 전주시 덕진구 백제대로 567 전북대학교 무형문화연구원 063-270-4098 (O) 063-270-4069 (F)
+                    </div>
+                </font>
+            </div>
+
+            <style>
+                .footer-wrap
+                {
+                    width: 100%;
+                    background-color: white;
+                    font-size: 12px;
+                    text-align: center;
+                    margin-top: 0px;
+                    font-weight: 400;
+                    margin-bottom: 10px;
+                }
+            </style>
+
+        </div>
     </div>
+    <div id="TopHome">
+        <div id="GoTop" style="display: block;"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $( window ).scroll(function() {
+                if( $( window ).scrollTop() != 0 ) {
+                    $("#GoTop").fadeIn();
+                }else {
+                    $("#GoTop").fadeOut();
+                }
+            });
+
+            $("#GoTop").click(function() {
+                $( window ).scrollTop(0);
+            });
+        });
+    </script>
+
+    <style>
+        #TopHome {
+            width: 42px;
+            height: 42px;
+            position: fixed;
+            bottom: 50px;
+            right: 10px;
+        }
+        #GoTop {
+            width: 42px;
+            height: 42px;
+            display: none;
+            background: url(http://ichpedia.org//Static/Images/art_ico.png) no-repeat;
+            background-position: -150px -500px;
+            opacity: 0.6;
+            float: right;
+    </style>
 </body>
 </html>
