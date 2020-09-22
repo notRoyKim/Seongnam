@@ -4,32 +4,23 @@
     <meta charset="UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+
+
+    <!--jssor slider 사용-->
+    <script type="text/javascript" src="/JS/CustomJSSOR.js"></script>
+    <script type="text/javascript" src="/JS/jssor.slider-28.0.0.min.js"></script>
+    <link href="/CSS/CustomJSSOR.css" rel="stylesheet" type="text/css">
+
     <link href="/CSS/base_top.css" rel="stylesheet" type="text/css">
     <title> 무형문화연구소 - 디지털 아카이브즈 </title>
-</head>
-<body>
-    <div id="TOPHISTORY">
-        <div id="GT">
-            <div class="goog-inline-block goog-flat-menu-button js-language-selector jfk-select" role="listbox" aria-expanded="false" tabindex="0" aria-haspopup="true" aria-activedescendant=":12">
-                <div class="goog-inline-block goog-flat-menu-button-caption notranslate" id=":12" role="option" aria-setsize="35" aria-posinset="35">Translation ▼</div>
-                <div class="goog-inline-block goog-flat-menu-button-dropdown" aria-hidden="true">&nbsp;</div>
-                <div class="top-bar-button2">
-                    <center>
-                        <div id="unseenbox" style="z-index: 1000;">
-                            <div class="clip-100x50 cursor_test letter-img1 notranslate">한국어</div>
-                            <div value="영어" class="clip-100x50 cursor_test notranslate" index="2">English</div>
-                            <div class="clip-100x50 cursor_test notranslate" index="3">中國語</div>
-                            <div class="clip-100x50 cursor_test notranslate" index="4">日本語</div>
-                            <div class="clip-100x50 cursor_test notranslate" index="5">español</div>
-                            <div class="clip-100x50 cursor_test notranslate" index="6">русский</div>
-                        </div>
-                    </center>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--page style-->
     <style>
+        #TOP {
+            width: 1140px;
+            margin: auto;
+        }
         #TOPHISTORY {
+
             max-width: 1040px;
             width: 1040px;
             height: 100%;
@@ -41,49 +32,123 @@
             line-height: 30px;
             float: left;
         }
-        #GT {
-            float: right;
-            padding: 5px 0px 0px 5px;
-        }
-        .goog-inline-block {
-            /* position: relative; */
-            display: inline-block;
-        }
-        .goog-flat-menu-button-caption {
-            vertical-align: top;
-            white-space: nowrap;
-            line-height: 200%;
-        }
-        .top-bar-button2 {
-            float: none;
-        }
-        #unseenbox {
-            top: 29px;
-            background-color: #f5f5f5;
-            width: 89px;
-            height: 170px;
-            color: black;
-            font: 13px solid;
-            display: none;
-            position: absolute;
-            border: 1px solid #dcdcdc;
-            border-radius: 5px;
-            padding-top: 10px;
-        }
-        .clip-100x50 {
-            position: relative;
-            overflow: hidden;
-            float: none;
-            width: 87px;
-            height: 25px;
-            color: black;
-            font: 13px solid;
-            font-family: 'Nanum Gothic';
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
+        #SEARCH {
+            width: 100%;
+            margin: 25px 0px 0px 0px;
         }
     </style>
 
+    <!--view page header 스타일 정리 -->
+    <style>
+        .CreatorCollection {
+            font-size: 30px;
+            font-weight: 600;
+            color: #212121;
+        }
+        .TitleInContentsInLineInContents {
+            margin-top: 3px;
+            margin-bottom: 3px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 32px;
+            color: #0D47A1;
+        }
+    </style>
+</head>
+<body>
+    <div id="TOP">
+        <div id="TOPHISTORY"></div>
+        <div id="SEARCH">
+            <div id="manual_popup" style="position:absolute;z-index:1;text-align:center"><br>
+
+                <p class="search_title">OR검색 (A와 B또는 두 단어 모두 포함)</p>
+                계원 별신굿 , 계원 OR 별신굿 <br><br>
+
+                <p class="search_title">AND검색 (A와 B를 동시에 포함)</p>
+                계원 AND 별신굿<br><br>
+
+                <p class="search_title">동시검색</p>
+                (악기장 AND 최동식) OR (계원 AND 별신굿)<br><br>
+
+                <p class="search_title">필드검색 (제목이나 본문에서 검색)</p>
+                Title:계원 별신굿<br>
+                Writer:이지호<br>
+                Contents:별신굿<br><br>
+
+                <p class="search_title">필드동시검색</p>
+                Title:악기장 -Contents:최동식<br>(제목은 악기장, 본문내용은 최동식으로 검색)<br><br>
+
+                <p class="search_title">유사단어검색</p>
+                굿놀이~ (굿놀이와 비슷한 단어도 검색)<br><br>
+
+                <p class="search_title">근접검색</p>
+                "계원 별신굿"~5<br>
+                (계원과 별신굿 사이의 단어가 5개 이내로 검색)<br><br>
+
+                <p class="search_title">단어시작부분검색</p>
+                줄다리기*<br>
+                (단어가 줄다리기~로 시작하는 검색)<br><br>
+
+            </div>
+            <div id="manual_popupX" onclick="search_popupX()" style="position:absolute;z-index:1; cursor:pointer">
+                <img src="/Static/close_button.png" style="width:100%; height:100%;">
+            </div>
+            <div id="SEARCHinSEARCH" align="center">
+                <div class="CreatorCollection">아카이브즈</div>
+                <div class="CreatorCollection">
+                    <span class="TitleInContentsInLineInContents">이일용님의 구술생애사</span>
+                </div>
+
+                <div id="top_block">
+                    <div id="top_block_wrap">
+                        <div style="width:100%;text-align:center;">
+                            <div style="height:5px;"></div>
+                            <div id="MyLogo">
+                                <div id="box">
+                                    <a><div class="search_manual" onclick="search_popup(event)"><img src="/Image/settings (2).png"></div></a>
+                                    <div id="search" align="right">
+                                        <input id="searchbox" type="text" name="search" value="아카이브즈 자료 검색">
+                                    </div>
+                                    <div id="search_type">
+                                        <table class="Tables_logo">
+                                            <tbody><tr>
+                                                <td class="search_filter_button" value="전체검색" style="background: white; color: black;">전체</td>
+                                                <td class="search_filter_button" value="무형유산 자료 검색">무형유산</td>
+                                                <td class="search_filter_button" value="아카이브즈 자료 검색" style="background: rgb(229, 229, 229); color: rgb(255, 118, 0);">아카이브즈</td>
+                                                <td class="search_filter_button" value="고문서 자료 검색">고문서</td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="imgbox">
+            <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1000px;height:400px;overflow:hidden;visibility:hidden;">
+                <!-- Loading Screen -->
+                <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
+                </div>
+                <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1000px;height:400px;overflow:hidden;">
+                    <div>
+                        <img data-u="image" src="/Image/2-01-LH-04092004-김상옥-0001.jpg" />
+                    </div>
+                </div><a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">web animation</a>
+                <!-- Arrow Navigator -->
+                <div data-u="arrowleft" class="jssora111 a111L" style="width:50px;height:50px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+
+                </div>
+                <div data-u="arrowright" class="jssora111 a111R" style="width:50px;height:50px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+
+                </div>
+            </div>
+            <script>
+                jssor_1_slider_init();
+            </script>
+        </div>
+    </div>
 </body>
 </html>

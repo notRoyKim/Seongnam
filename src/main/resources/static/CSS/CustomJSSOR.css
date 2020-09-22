@@ -1,0 +1,25 @@
+/*jssor slider loading skin spin css*/
+.jssorl-009-spin img {
+    animation-name: jssorl-009-spin;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes jssorl-009-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/*jssor slider arrow skin 111 css*/
+.jssora111 {display:block;position:absolute;cursor:pointer;}
+.jssora111 .a {fill:#ddd;fill-opacity:.7;stroke:#000;stroke-width:160;stroke-miterlimit:10;stroke-opacity:.3;}
+.jssora111:hover {opacity:.8;}
+.jssora111.jssora111dn {opacity:.4;}
+.jssora111.jssora111ds {opacity:.3;pointer-events:none;}
+.a111L {background:url("/Image/left.png"); background-size: 100% 100%;}
+.a111R {background:url("/Image/right.png"); background-size: 100% 100%;}
+
+.imgbox {
+    border: 1px lightgray solid;
+}
