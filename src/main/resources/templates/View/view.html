@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
@@ -155,66 +155,68 @@
 <body>
     <div id="TOP">
         <div id="TOPHISTORY"></div>
-        <div id="SEARCH">
-            <div id="manual_popup" style="position:absolute;z-index:1;text-align:center"><br>
+        <th:block th:each = "i : ${viewDataList}">
+            <div id="SEARCH">
+                <div id="manual_popup" style="position:absolute;z-index:1;text-align:center"><br>
 
-                <p class="search_title">OR검색 (A와 B또는 두 단어 모두 포함)</p>
-                계원 별신굿 , 계원 OR 별신굿 <br><br>
+                    <p class="search_title">OR검색 (A와 B또는 두 단어 모두 포함)</p>
+                    계원 별신굿 , 계원 OR 별신굿 <br><br>
 
-                <p class="search_title">AND검색 (A와 B를 동시에 포함)</p>
-                계원 AND 별신굿<br><br>
+                    <p class="search_title">AND검색 (A와 B를 동시에 포함)</p>
+                    계원 AND 별신굿<br><br>
 
-                <p class="search_title">동시검색</p>
-                (악기장 AND 최동식) OR (계원 AND 별신굿)<br><br>
+                    <p class="search_title">동시검색</p>
+                    (악기장 AND 최동식) OR (계원 AND 별신굿)<br><br>
 
-                <p class="search_title">필드검색 (제목이나 본문에서 검색)</p>
-                Title:계원 별신굿<br>
-                Writer:이지호<br>
-                Contents:별신굿<br><br>
+                    <p class="search_title">필드검색 (제목이나 본문에서 검색)</p>
+                    Title:계원 별신굿<br>
+                    Writer:이지호<br>
+                    Contents:별신굿<br><br>
 
-                <p class="search_title">필드동시검색</p>
-                Title:악기장 -Contents:최동식<br>(제목은 악기장, 본문내용은 최동식으로 검색)<br><br>
+                    <p class="search_title">필드동시검색</p>
+                    Title:악기장 -Contents:최동식<br>(제목은 악기장, 본문내용은 최동식으로 검색)<br><br>
 
-                <p class="search_title">유사단어검색</p>
-                굿놀이~ (굿놀이와 비슷한 단어도 검색)<br><br>
+                    <p class="search_title">유사단어검색</p>
+                    굿놀이~ (굿놀이와 비슷한 단어도 검색)<br><br>
 
-                <p class="search_title">근접검색</p>
-                "계원 별신굿"~5<br>
-                (계원과 별신굿 사이의 단어가 5개 이내로 검색)<br><br>
+                    <p class="search_title">근접검색</p>
+                    "계원 별신굿"~5<br>
+                    (계원과 별신굿 사이의 단어가 5개 이내로 검색)<br><br>
 
-                <p class="search_title">단어시작부분검색</p>
-                줄다리기*<br>
-                (단어가 줄다리기~로 시작하는 검색)<br><br>
+                    <p class="search_title">단어시작부분검색</p>
+                    줄다리기*<br>
+                    (단어가 줄다리기~로 시작하는 검색)<br><br>
 
-            </div>
-            <div id="manual_popupX" onclick="search_popupX()" style="position:absolute;z-index:1; cursor:pointer">
-                <img src="/Static/close_button.png" style="width:100%; height:100%;">
-            </div>
-            <div id="SEARCHinSEARCH" align="center">
-                <div class="CreatorCollection">아카이브즈</div>
-                <div class="CreatorCollection">
-                    <span class="TitleInContentsInLineInContents">이일용님의 구술생애사</span>
                 </div>
+                <div id="manual_popupX" onclick="search_popupX()" style="position:absolute;z-index:1; cursor:pointer">
+                    <img src="/Static/close_button.png" style="width:100%; height:100%;">
+                </div>
+                <div id="SEARCHinSEARCH" align="center">
+                    <div class="CreatorCollection">아카이브즈</div>
+                    <div class="CreatorCollection">
+                        <span class="TitleInContentsInLineInContents" th:text="${i.Title}"></span>
+                    </div>
 
-                <div id="top_block">
-                    <div id="top_block_wrap">
-                        <div style="width:100%;text-align:center;">
-                            <div style="height:5px;"></div>
-                            <div id="MyLogo">
-                                <div id="box">
-                                    <a><div class="search_manual" onclick="search_popup(event)"><img src="/Image/settings (2).png"></div></a>
-                                    <div id="search" align="right">
-                                        <input id="searchbox" type="text" name="search" value="아카이브즈 자료 검색">
-                                    </div>
-                                    <div id="search_type">
-                                        <table class="Tables_logo">
-                                            <tbody><tr>
-                                                <td class="search_filter_button" value="전체검색" style="background: white; color: black;">전체</td>
-                                                <td class="search_filter_button" value="무형유산 자료 검색">무형유산</td>
-                                                <td class="search_filter_button" value="아카이브즈 자료 검색" style="background: rgb(229, 229, 229); color: rgb(255, 118, 0);">아카이브즈</td>
-                                                <td class="search_filter_button" value="고문서 자료 검색">고문서</td>
-                                            </tr>
-                                            </tbody></table>
+                    <div id="top_block">
+                        <div id="top_block_wrap">
+                            <div style="width:100%;text-align:center;">
+                                <div style="height:5px;"></div>
+                                <div id="MyLogo">
+                                    <div id="box">
+                                        <a><div class="search_manual" onclick="search_popup(event)"><img src="/Image/settings (2).png"></div></a>
+                                        <div id="search" align="right">
+                                            <input id="searchbox" type="text" name="search" value="아카이브즈 자료 검색">
+                                        </div>
+                                        <div id="search_type">
+                                            <table class="Tables_logo">
+                                                <tbody><tr>
+                                                    <td class="search_filter_button" value="전체검색" style="background: white; color: black;">전체</td>
+                                                    <td class="search_filter_button" value="무형유산 자료 검색">무형유산</td>
+                                                    <td class="search_filter_button" value="아카이브즈 자료 검색" style="background: rgb(229, 229, 229); color: rgb(255, 118, 0);">아카이브즈</td>
+                                                    <td class="search_filter_button" value="고문서 자료 검색">고문서</td>
+                                                </tr>
+                                                </tbody></table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -222,123 +224,105 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="imgbox">
-            <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1000px;height:400px;overflow:hidden;visibility:hidden;">
-                <!-- Loading Screen -->
-                <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/Image/spin.svg" />
-                </div>
-                <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1000px;height:400px;overflow:hidden;">
-                    <div>
-                        <img data-u="image" src="/Image/2-01-LH-04092004-김상옥-0001.jpg" />
+            <div class="imgbox">
+                <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1000px;height:400px;overflow:hidden;visibility:hidden;">
+                    <!-- Loading Screen -->
+                    <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                        <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/Image/spin.svg" />
                     </div>
-                </div><a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">web animation</a>
-                <!-- Arrow Navigator -->
-                <div data-u="arrowleft" class="jssora111 a111L" style="width:50px;height:50px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+                    <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1000px;height:400px;overflow:hidden;">
+                        <div>
+                            <img data-u="image" src="/Image/2-01-LH-04092004-김상옥-0001.jpg" />
+                        </div>
+                        <div>
+                            <img data-u="image" src="/Image/2-01-LH-04092004-김상옥-0001.jpg" />
+                        </div>
+                        <div>
+                            <img data-u="image" src="/Image/2-01-LH-04092004-김상옥-0001.jpg" />
+                        </div>
+                    </div><a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">web animation</a>
+                    <!-- Arrow Navigator -->
+                    <div data-u="arrowleft" class="jssora111 a111L" style="width:50px;height:50px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
 
-                </div>
-                <div data-u="arrowright" class="jssora111 a111R" style="width:50px;height:50px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+                    </div>
+                    <div data-u="arrowright" class="jssora111 a111R" style="width:50px;height:50px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
 
+                    </div>
                 </div>
+                <script>
+                    jssor_1_slider_init();
+                </script>
             </div>
-            <script>
-                jssor_1_slider_init();
-            </script>
-        </div>
-        <div id="Content">
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">제목</div>
-                <div class="ContentsInLineInContents">
-                    김길련님의 구술생애사
-                </div>
-            </div>
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">주요내용</div>
-                <div class="ContentsInLineInContents">
-                    1. 김길련씨 집 거실에 있는 연탄 난로<br>2. 김길련씨가 직접 종이로 만든 받침대<br>3. 김길련씨 집 마당에 쌓아놓은 연탄
-                </div>
-            </div>
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">자료배경</div>
-                <div class="ContentsInLineInContents">
-                    김길련은 1921년 평북 강계 시중면에서 개성김씨 종가집의 8남매 중 막내딸로 태어났다. 18세에 어려면의 한 지주가의 넷째 아들과 결혼을 하였다. 해방이 되자 북한정권의 지주에 대한 박해로 1946년 남편, 장녀, 시동생과 함께 서울로 남하하였다. 서울 신당동에서 살다가 한국전쟁을 당해 부산으로 피난 갔다가 수복 후 서울로 올라와서 오남매를 낳고 살았다. 상계동에서 아이들을 모두 결혼시키고 남편이 죽은 뒤 10년 전부터 장남가족과 함께 살고 있다.
-                </div>
-            </div>
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">자료정보</div>
-                <div class="ContentsInLineInContents">
-                    <div>
-                        <span class="SmallTitle">제작자</span> :
-                        <span class="SmallContents">윤택림</span>
-                    </div>
+            <div id="Content">
 
+                <div class="LineInContents">
+                    <div class="TitleInLineInContents">제목</div>
+                    <div class="ContentsInLineInContents" th:text="${i.Title}"></div>
+                </div>
 
-                    <div>
-                        <span class="SmallTitle">제보자</span> :
-                        <span class="SmallContents">김길련</span>
-                    </div>
+                <div class="LineInContents">
+                    <div class="TitleInLineInContents">주요내용</div>
+                    <div class="ContentsInLineInContents" th:text="${i.Main_Contents}"></div>
+                </div>
 
-                    <div>
-                        <span class="SmallTitle">제작년월일</span> :
-                        <span class="SmallContents">2008.03.06</span>
-                    </div>
-                    <div>
-                        <span class="SmallTitle">자료제작기관</span> :
-                        <span class="SmallContents">20세기민중생활사연구회</span>
-                    </div>
-                    <div>
-                        <span class="SmallTitle">자료번호</span> :
-                        <span class="SmallContents">2-01LH22112007YTLGGL0005</span>
+                <div class="LineInContents">
+                    <div class="TitleInLineInContents">자료배경</div>
+                    <div class="ContentsInLineInContents" th:text="${i.Background}"></div>
+                </div>
+
+                <div class="LineInContents">
+                    <div class="TitleInLineInContents">자료정보</div>
+                    <div class="ContentsInLineInContents">
+                        <div>
+                            <span class="SmallTitle">제작자</span> :
+                            <span class="SmallContents" th:text="${i.Producer}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">제보자</span> :
+                            <span class="SmallContents" th:text="${i.Provider}"></span>
+                        </div>
+
+                        <div>
+                            <span class="SmallTitle">제작년월일</span> :
+                            <span class="SmallContents" th:text="${i.Production_Date}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">자료제작기관</span> :
+                            <span class="SmallContents" th:text="${i.Production_Agency}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">자료번호</span> :
+                            <span class="SmallContents" th:text="${i.Data_Number}"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">과제정보</div>
-                <div class="ContentsInLineInContents">
-                    <div>
-                        <span class="SmallTitle">과제기간</span> :
-                        <span class="SmallContents">2006. 12. 1 ~ 2008. 11. 30</span>
-                    </div>
 
-
-                    <div>
-                        <span class="SmallTitle">과제명</span> :
-                        <span class="SmallContents">가까운 옛날 : 민중생활사의 기록과 해설</span>
-                    </div>
-
-
-                    <div>
-                        <span class="SmallTitle">과제기관</span> :
-                        <span class="SmallContents">교육인적자원부 영남대학교</span>
+                <div class="LineInContents">
+                    <div class="TitleInLineInContents">기록정보</div>
+                    <div class="ContentsInLineInContents">
+                        <div>
+                            <span class="SmallTitle">기록형식</span> :
+                            <span class="SmallContents" th:text="${i.Data_Type}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">기록언어</span> :
+                            <span class="SmallContents" th:text="${i.Data_Language}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">기록형태</span> :
+                            <span class="SmallContents" th:text="${i.Recording_Type}"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">기록정보</div>
-                <div class="ContentsInLineInContents">
-                    <div>
-                        <span class="SmallTitle">기록형식</span> :
-                        <span class="SmallContents">JPG</span>
-                    </div>
-                    <div>
-                        <span class="SmallTitle">기록언어</span> :
-                        <span class="SmallContents">한국어</span>
-                    </div>
-                    <div>
-                        <span class="SmallTitle">기록형태</span> :
-                        <span class="SmallContents">이미지</span>
-                    </div>
-                </div>
-            </div>
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">자료출처 · 저작권</div>
-                <div class="ContentsInLineInContents">
-                    이 자료의 저작권은 20세기민중생활사연구회에 있으며, 문서로 된 동의 없이 무단으로 복제, 배포 및 사용할 수 없습니다.
-                </div>
-            </div>
 
-        </div>
+                <div class="LineInContents">
+                    <div class="TitleInLineInContents">자료출처 · 저작권</div>
+                    <div class="ContentsInLineInContents" th:text="${i.Copyright}"></div>
+                </div>
+
+            </div>
+        </th:block>
+
         <div class="LineInShare">
             <div class="share_wrapper">
                 <div class="btn_print">

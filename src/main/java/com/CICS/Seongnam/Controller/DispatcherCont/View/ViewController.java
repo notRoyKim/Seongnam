@@ -2,6 +2,7 @@ package com.CICS.Seongnam.Controller.DispatcherCont.View;
 
 import com.CICS.Seongnam.Domain.ViewData;
 import com.CICS.Seongnam.Service.View.ViewService;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,21 +28,38 @@ public class ViewController {
             ViewData viewData;
             List<ViewData> viewDataList = new ArrayList<>();
 
-            //get 해온 id값이 없으면
-            if(articleID == "") {
+
+            //GET METHOD NOT USED, then return to main page
+            if(articleID == null){
                 mv.setViewName("redirect:/");
                 return mv;
             }
 
+
+            //viewdata ( archive 뷰의 메타데이터를 갖고있는 class ViewData)
             viewData = viewService.getArchives(articleID);
+
+
+            //viewdata가 비어있다면 = getArchives로 Select한 결과가 없다면 404.html로 에러처리
+            if(ObjectUtils.isEmpty(viewData)){
+                mv.setViewName("ErrorControl/404");
+                return mv;
+            }
+
             viewDataList.add(viewData);
+
+            String Mediapath = viewData.getContent_Media();
+            String test2 = "i";
+            String test = "i,i";
+
+
 
             mv.setViewName("View/view");
             mv.addObject("viewDataList",viewDataList);
             return mv;
         }
         catch (Exception e) {
-
+            e.printStackTrace();
         }
         return mv;
     }
