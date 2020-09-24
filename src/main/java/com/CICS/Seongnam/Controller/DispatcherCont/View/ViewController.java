@@ -50,6 +50,11 @@ public class ViewController {
 
             String Mediapath = viewData.getContent_Media();
             String test2 = "i";
+            String[] tt2 = test2.split(",");
+            for(int i = 0 ; i < tt2.length ; i++) {
+                System.out.println(tt2[i]);
+            }
+
             String test = "i,i";
 
 
