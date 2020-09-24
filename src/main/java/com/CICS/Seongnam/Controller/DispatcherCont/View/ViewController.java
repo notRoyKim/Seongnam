@@ -48,19 +48,17 @@ public class ViewController {
 
             viewDataList.add(viewData);
 
-            String Mediapath = viewData.getContent_Media();
-            String test2 = "i";
-            String[] tt2 = test2.split(",");
-            for(int i = 0 ; i < tt2.length ; i++) {
-                System.out.println(tt2[i]);
+            String Media = viewData.getContent_Media();
+            String[] Media_Path = Media.split(",");
+            String Media_html = "";
+
+            for(int i = 0 ; i < Media_Path.length ; i++) {
+                Media_html = Media_html + "<div><img data-u=\"image\" src=\"/Image/" + Media_Path[i] + "\" /></div>";
             }
-
-            String test = "i,i";
-
-
 
             mv.setViewName("View/view");
             mv.addObject("viewDataList",viewDataList);
+            mv.addObject("Media_html",Media_html);
             return mv;
         }
         catch (Exception e) {
