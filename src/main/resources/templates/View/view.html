@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+
+
+    <!--jssor slider 사용-->
+    <script type="text/javascript" src="/JS/CustomJSSOR.js"></script>
+    <script type="text/javascript" src="/JS/jssor.slider-28.0.0.min.js"></script>
+    <link href="/CSS/CustomJSSOR.css" rel="stylesheet" type="text/css">
+
+    <link href="/CSS/base_top.css" rel="stylesheet" type="text/css">
+    <title> 무형문화연구소 - 디지털 아카이브즈 </title>
+    <!--page style-->
+    <style>
+        #TOP {
+            width: 1140px;
+            margin: auto;
+        }
+        #TOPHISTORY {
+
+            max-width: 1040px;
+            width: 1040px;
+            height: 100%;
+            font-size: 11px;
+            font-weight: bold;
+            color: #841A1C;
+            margin: auto;
+            font-family: 'Nanum Gothic';
+            line-height: 30px;
+            float: left;
+        }
+        #SEARCH {
+            width: 100%;
+            margin: 25px 0px 0px 0px;
+        }
+    </style>
+
+    <!--view page header 스타일 정리 -->
+    <style>
+        .CreatorCollection {
+            font-size: 30px;
+            font-weight: 600;
+            color: #212121;
+        }
+        .TitleInContentsInLineInContents {
+            margin-top: 3px;
+            margin-bottom: 3px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 32px;
+            color: #0D47A1;
+        }
+        #Content {
+            width: 100%;
+            max-width: 1140px;
+            margin: auto;
+        }
+        .LineInContents {
+            width: 98%;
+            min-height: 50px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            margin-left: 1%;
+            margin-right: 1%;
+            border-bottom: 1px solid #AAAAAA;
+            clear: both;
+            overflow: hidden;
+            line-height: 160%;
+        }
+        .TitleInLineInContents {
+            width: 180px;
+            font-size: 16px;
+            font-weight: 600;
+            float: left;
+            color: #212121;
+            padding-left: 3px;
+        }
+        .ContentsInLineInContents {
+            width: -webkit-calc(100% - 250px);
+            width: calc(100% - 250px);
+            float: left;
+            display: block;
+            text-align: justify;
+            color: #212121;
+        }
+        .SmallTitle {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        .LineInShare {
+            width: 100%;
+            height: 50px;
+            margin-top: 30px;
+        }
+        .share_wrapper {
+            margin: 0px auto;
+            width: 112px;
+            height: 40px;
+            overflow: visible;
+            text-align: center;
+        }
+        .btn_print {
+            width: 24px;
+            height: 24px;
+            float: left;
+            cursor: pointer;
+            position: relative;
+            background: white;
+            margin-right: 10px;
+        }
+        .btn_container {
+            width: 24px;
+            height: 24px;
+            float: left;
+            cursor: pointer;
+            position: relative;
+            z-index: 100;
+            background: white;
+        }
+        .sharebutton {
+            width: 24px;
+            height: auto;
+            max-height: 24px;
+            border-radius: 5px;
+        }
+        #btn_facebook.move {
+            -webkit-transform: translate(27px, 0px);
+            transform: translate(27px, 0px);
+        }
+        #btn_twitter.move {
+            -webkit-transform: translate(54px, 0px);
+            transform: translate(54px, 0px);
+        }
+        .btn_share {
+            width: 24px;
+            height: 24px;
+            float: left;
+            cursor: pointer;
+            position: relative;
+            z-index: 50;
+            -webkit-transform: translate(0, 0);
+            -webkit-transition: -webkit-transform 500ms;
+            transform: translate(0, 0);
+            transition: transform 500ms;
+        }
+        .imgbox {
+            margin-bottom: 35px;
+        }
+    </style>
+</head>
+<body>
+<div id="TOP">
+    <div id="TOPHISTORY"></div>
+    <th:block th:each = "i : ${viewDataList}">
+        <div id="SEARCH">
+            <div id="manual_popup" style="position:absolute;z-index:1;text-align:center"><br>
+
+                <p class="search_title">OR검색 (A와 B또는 두 단어 모두 포함)</p>
+                계원 별신굿 , 계원 OR 별신굿 <br><br>
+
+                <p class="search_title">AND검색 (A와 B를 동시에 포함)</p>
+                계원 AND 별신굿<br><br>
+
+                <p class="search_title">동시검색</p>
+                (악기장 AND 최동식) OR (계원 AND 별신굿)<br><br>
+
+                <p class="search_title">필드검색 (제목이나 본문에서 검색)</p>
+                Title:계원 별신굿<br>
+                Writer:이지호<br>
+                Contents:별신굿<br><br>
+
+                <p class="search_title">필드동시검색</p>
+                Title:악기장 -Contents:최동식<br>(제목은 악기장, 본문내용은 최동식으로 검색)<br><br>
+
+                <p class="search_title">유사단어검색</p>
+                굿놀이~ (굿놀이와 비슷한 단어도 검색)<br><br>
+
+                <p class="search_title">근접검색</p>
+                "계원 별신굿"~5<br>
+                (계원과 별신굿 사이의 단어가 5개 이내로 검색)<br><br>
+
+                <p class="search_title">단어시작부분검색</p>
+                줄다리기*<br>
+                (단어가 줄다리기~로 시작하는 검색)<br><br>
+
+            </div>
+            <div id="manual_popupX" onclick="search_popupX()" style="position:absolute;z-index:1; cursor:pointer">
+                <img src="/Static/close_button.png" style="width:100%; height:100%;">
+            </div>
+            <div id="SEARCHinSEARCH" align="center">
+                <div class="CreatorCollection">아카이브즈</div>
+                <div class="CreatorCollection">
+                    <span class="TitleInContentsInLineInContents" th:text="${i.Title}"></span>
+                </div>
+
+                <div id="top_block">
+                    <div id="top_block_wrap">
+                        <div style="width:100%;text-align:center;">
+                            <div style="height:5px;"></div>
+                            <div id="MyLogo">
+                                <div id="box">
+                                    <a><div class="search_manual" onclick="search_popup(event)"><img src="/Image/settings (2).png"></div></a>
+                                    <div id="search" align="right">
+                                        <input id="searchbox" type="text" name="search" value="아카이브즈 자료 검색">
+                                    </div>
+                                    <div id="search_type">
+                                        <table class="Tables_logo">
+                                            <tbody><tr>
+                                                <td class="search_filter_button" value="전체검색" style="background: white; color: black;">전체</td>
+                                                <td class="search_filter_button" value="무형유산 자료 검색">무형유산</td>
+                                                <td class="search_filter_button" value="아카이브즈 자료 검색" style="background: rgb(229, 229, 229); color: rgb(255, 118, 0);">아카이브즈</td>
+                                                <td class="search_filter_button" value="고문서 자료 검색">고문서</td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="imgbox">
+            <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1000px;height:400px;overflow:hidden;visibility:hidden;">
+                <!-- Loading Screen -->
+                <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/Image/spin.svg" />
+                </div>
+                <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1000px;height:400px;overflow:hidden;" th:utext="${Media_html}"></div>
+                <a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">web animation</a>
+                <!-- Arrow Navigator -->
+                <div data-u="arrowleft" class="jssora111 a111L" style="width:50px;height:50px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+
+                </div>
+                <div data-u="arrowright" class="jssora111 a111R" style="width:50px;height:50px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+
+                </div>
+            </div>
+            <script>
+                jssor_1_slider_init();
+            </script>
+        </div>
+        <div id="Content">
+
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">제목</div>
+                <div class="ContentsInLineInContents" th:text="${i.Title}"></div>
+            </div>
+
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">주요내용</div>
+                <div class="ContentsInLineInContents" th:text="${i.Main_Contents}"></div>
+            </div>
+
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">자료배경</div>
+                <div class="ContentsInLineInContents" th:text="${i.Background}"></div>
+            </div>
+
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">자료정보</div>
+                <div class="ContentsInLineInContents">
+                    <div>
+                        <span class="SmallTitle">제작자</span> :
+                        <span class="SmallContents" th:text="${i.Producer}"></span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">제보자</span> :
+                        <span class="SmallContents" th:text="${i.Provider}"></span>
+                    </div>
+
+                    <div>
+                        <span class="SmallTitle">제작년월일</span> :
+                        <span class="SmallContents" th:text="${i.Production_Date}"></span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">자료제작기관</span> :
+                        <span class="SmallContents" th:text="${i.Production_Agency}"></span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">자료번호</span> :
+                        <span class="SmallContents" th:text="${i.Data_Number}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">기록정보</div>
+                <div class="ContentsInLineInContents">
+                    <div>
+                        <span class="SmallTitle">기록형식</span> :
+                        <span class="SmallContents" th:text="${i.Data_Type}"></span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">기록언어</span> :
+                        <span class="SmallContents" th:text="${i.Data_Language}"></span>
+                    </div>
+                    <div>
+                        <span class="SmallTitle">기록형태</span> :
+                        <span class="SmallContents" th:text="${i.Recording_Type}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="LineInContents">
+                <div class="TitleInLineInContents">자료출처 · 저작권</div>
+                <div class="ContentsInLineInContents" th:text="${i.Copyright}"></div>
+            </div>
+
+        </div>
+    </th:block>
+
+    <div class="LineInShare">
+        <div class="share_wrapper">
+            <div class="btn_print">
+                <img class="sharebutton" src="/Image/print.png" onclick="PagePrint(); return false;">
+            </div>
+            <div class="btn_container">
+                <img class="sharebutton" src="/Image/share_button.png">
+            </div>
+            <div class="btn_share" id="btn_facebook" onclick="share_facebook()">
+                <img class="sharebutton" src="/Image/share_facebook.png">
+            </div>
+            <div class="btn_share" id="btn_twitter" onclick="share_twitter()">
+                <img class="sharebutton" src="/Image/share_twitter.png">
+            </div>
+
+            <span class="share_txt tog">* 공유시 사진 자료가 보이지 않을 경우, 잠시 후 다시 시도하시기 바랍니다.</span>
+
+        </div>
+    </div>
+    <div class="Footer">
+        <div class="footer-wrap">
+            <font color="#A4A4A4">
+                <div id="Footer-text" style="font-size: 17px;">
+                    54896 전북 전주시 덕진구 백제대로 567 전북대학교 무형문화연구원 063-270-4098 (O) 063-270-4069 (F)
+                </div>
+            </font>
+        </div>
+
+        <style>
+            .footer-wrap
+            {
+                width: 100%;
+                background-color: white;
+                font-size: 12px;
+                text-align: center;
+                margin-top: 0px;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+        </style>
+
+    </div>
+</div>
+<div id="TopHome">
+    <div id="GoTop" style="display: block;"></div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $( window ).scroll(function() {
+            if( $( window ).scrollTop() != 0 ) {
+                $("#GoTop").fadeIn();
+            }else {
+                $("#GoTop").fadeOut();
+            }
+        });
+
+        $("#GoTop").click(function() {
+            $( window ).scrollTop(0);
+        });
+    });
+</script>
+
+<style>
+    #TopHome {
+        width: 42px;
+        height: 42px;
+        position: fixed;
+        bottom: 50px;
+        right: 10px;
+    }
+    #GoTop {
+        width: 42px;
+        height: 42px;
+        display: none;
+        background: url(http://ichpedia.org//Static/Images/art_ico.png) no-repeat;
+        background-position: -150px -500px;
+        opacity: 0.6;
+        float: right;
+</style>
+</body>
+</html>
