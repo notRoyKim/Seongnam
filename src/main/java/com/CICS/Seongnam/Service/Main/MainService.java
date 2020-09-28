@@ -11,7 +11,7 @@ public class MainService {
     @Autowired
     private MainMapper mainMapper;
 
-    public String getallArchivesID() throws Exception {
+    public String[] getallArchivesID() throws Exception {
         return mainMapper.getallArchivesID();
     }
 }
