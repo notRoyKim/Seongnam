@@ -1,9 +1,10 @@
 package com.CICS.Seongnam.Service.Main;
 
+import com.CICS.Seongnam.Domain.ViewData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class MainService {
@@ -11,7 +12,7 @@ public class MainService {
     @Autowired
     private MainMapper mainMapper;
 
-    public String[] getallArchivesID() throws Exception {
-        return mainMapper.getallArchivesID();
+    public List<ViewData> getMainRandSlider() throws  Exception {
+        return mainMapper.getMainRandSlider();
     }
 }
