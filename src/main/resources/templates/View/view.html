@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!--jssor slider 사용-->
     <script type="text/javascript" src="/JS/CustomJSSOR.js"></script>
@@ -131,9 +131,15 @@
             -webkit-transform: translate(27px, 0px);
             transform: translate(27px, 0px);
         }
+        #btn_facebook {
+            left: -24px;
+        }
         #btn_twitter.move {
             -webkit-transform: translate(54px, 0px);
             transform: translate(54px, 0px);
+        }
+        #btn_twitter {
+            left: -48px;
         }
         .btn_share {
             width: 24px;
@@ -149,6 +155,15 @@
         }
         .imgbox {
             margin-bottom: 35px;
+        }
+        .share_txt {
+            float: left;
+            text-align: left;
+            display: none;
+            position: relative;
+            font-size: 13px;
+            color: #7e7e7e;
+            width: 440px;
         }
     </style>
 </head>
@@ -376,6 +391,20 @@
             $( window ).scrollTop(0);
         });
     });
+
+    var cont = document.querySelector('.btn_container');
+    var facebook = document.querySelector('#btn_facebook');
+    var twitter = document.querySelector('#btn_twitter');
+    var text = document.querySelector('.share_txt');
+    cont.addEventListener('click', function() {
+        facebook.classList.toggle('move');
+        twitter.classList.toggle('move');
+        text.classList.toggle('tog');
+    });
+
+    function PagePrint(){
+        alert("자료 다운로드는 전북대학교 무형문화연구소(063-270-4098)로 연락해주시기 바랍니다.");
+    }
 </script>
 
 <style>

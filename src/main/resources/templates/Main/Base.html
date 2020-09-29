@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<HTML LANG="KR">
+<HTML LANG="KR" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <TITLE> 무형문화연구소 - 디지털 아카이브즈 </TITLE>
     <link href="/Static/DigitalArchives/Images/ICons/Archives_Icon.ico" rel="shortcut icon">
@@ -100,62 +100,20 @@
         <!-- slider -->
         <!-- db연동과 랜덤 불러오기 작업 필요 -->
         <ul class="bxslider">
-            <li>
-                <div class="slider_card card_left">
-                    <img src="/Image/2-01-LH-04092004-김상옥-0001.jpg">
-                </div>
-                <div class="slider_card card_right">
-                    <div class="card_title">
-                        김O옥의 구술생애사
-                    </div>
-                    <hr class="card_hr">
-                    <div class="card_content">
-                        점포에서의 제보자 모습
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="slider_card card_left">
-                    <img src="/Image/2-03LH01022005이정옥0024.jpg">
-                </div>
-                <div class="slider_card card_right">
-                    <div class="card_title">
-                        이정옥의 구술 생애사
-                    </div>
-                    <hr class="card_hr">
-                    <div class="card_content">
-                        이정옥 큰아들 임환기 결혼사진
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="slider_card card_left">
-                    <img src="/Image/2-05LH18042008MARHBY0007.jpg">
-                </div>
-                <div class="slider_card card_right">
-                    <div class="card_title">
-                        하봉연의 구술생애사
-                    </div>
-                    <hr class="card_hr">
-                    <div class="card_content">
-                        신녕장과 하봉연의 가게
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="slider_card card_left">
-                    <img src="/Image/2-05LH14022003IYHRDR0007.jpg">
-                </div>
-                <div class="slider_card card_right">
-                    <div class="card_title">
-                        류두루의 구술생애사
-                    </div>
-                    <hr class="card_hr">
-                    <div class="card_content">
-                        안동 하회출신의 양반집 딸의 혼인과 6.25 피난 체험 및 당시 성주 사람들의 양반에 대한 의식
-                    </div>
-                </div>
-            </li>
+            <th:block th:each = "k : ${viewDataList}">
+                <li>
+                    <a th:href="@{/view/(id=${k.Archive_ID})}">
+                        <div class="slider_card card_left">
+                            <img th:attr="src=|/Image/${k.Content_Media}|">
+                        </div>
+                        <div class="slider_card card_right">
+                            <div class="card_title" th:text="${k.Title}"></div>
+                            <hr class="card_hr">
+                            <div class="card_content" th:text="${k.Main_Contents}"></div>
+                        </div>
+                    </a>
+                </li>
+            </th:block>
         </ul>
 
         <style>
@@ -448,6 +406,7 @@
                 height: 349px;
                 margin: 20px 20px 20px 20px;
                 text-align: justify;
+                color: black;
             }
             .bx-wrapper {
                 -webkit-box-shadow: none;
@@ -457,7 +416,9 @@
         <script type="text/javascript">
             //<![CDATA[
             $(document).ready(function() {
-                $('.bxslider').bxSlider();
+                $('.bxslider').bxSlider({
+                    touchEnabled:false
+                });
             });
             //]]>
         </script>

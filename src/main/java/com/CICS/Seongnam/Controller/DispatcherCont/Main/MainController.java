@@ -24,6 +24,7 @@ public class MainController {
         mv.setViewName("Main/Base");
 
         List<ViewData> viewDataList = mainService.getMainRandSlider();
+
         mv.addObject("viewDataList",viewDataList);
         return mv;
     }
