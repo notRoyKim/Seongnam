@@ -11,6 +11,6 @@ public class View_Gusul_Info {
     String Location;
     String Age;
     String Gender;
-    String Phone_number;
-    String Carrer;
+    String Phone_Number;
+    String Career;
 }

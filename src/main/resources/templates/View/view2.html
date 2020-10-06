@@ -170,7 +170,7 @@
 <body>
 <div id="TOP">
     <div id="TOPHISTORY"></div>
-    <th:block th:each = "i : ${viewDataList}">
+    <th:block th:each = "i : ${DataInfoList}">
         <div id="SEARCH">
             <div id="manual_popup" style="position:absolute;z-index:1;text-align:center"><br>
 
@@ -269,64 +269,46 @@
 
             <div class="LineInContents">
                 <div class="TitleInLineInContents">주요내용</div>
-                <div class="ContentsInLineInContents" th:text="${i.Main_Contents}"></div>
+                <div class="ContentsInLineInContents" th:text="${i.Contents}"></div>
             </div>
 
             <div class="LineInContents">
                 <div class="TitleInLineInContents">자료배경</div>
-                <div class="ContentsInLineInContents" th:text="${i.Background}"></div>
+                <div class="ContentsInLineInContents" th:text="${i.Data_Background}"></div>
             </div>
 
             <div class="LineInContents">
-                <div class="TitleInLineInContents">자료정보</div>
-                <div class="ContentsInLineInContents">
-                    <div>
-                        <span class="SmallTitle">제작자</span> :
-                        <span class="SmallContents" th:text="${i.Producer}"></span>
-                    </div>
-                    <div>
-                        <span class="SmallTitle">제보자</span> :
-                        <span class="SmallContents" th:text="${i.Provider}"></span>
-                    </div>
+                <div class="TitleInLineInContents">구술자 정보</div>
+                <th:block th:each="g : ${GusulInfoList}">
+                    <div class="ContentsInLineInContents">
+                        <div>
+                            <span class="SmallTitle">구술자 성명</span> :
+                            <span class="SmallContents" th:text="${g.Name}"></span>
+                        </div>
 
-                    <div>
-                        <span class="SmallTitle">제작년월일</span> :
-                        <span class="SmallContents" th:text="${i.Production_Date}"></span>
+                        <div>
+                            <span class="SmallTitle">구술자 주소</span> :
+                            <span class="SmallContents" th:text="${g.Location}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">구술자 나이</span> :
+                            <span class="SmallContents" th:text="${g.Age}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">구술자 성별</span> :
+                            <span class="SmallContents" th:text="${g.Gender}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">구술자 전화번호</span> :
+                            <span class="SmallContents" th:text="${g.Phone_Number}"></span>
+                        </div>
+                        <div>
+                            <span class="SmallTitle">구술자 약력</span> :
+                            <span class="SmallContents" th:text="${g.Career}"></span>
+                        </div>
                     </div>
-                    <div>
-                        <span class="SmallTitle">자료제작기관</span> :
-                        <span class="SmallContents" th:text="${i.Production_Agency}"></span>
-                    </div>
-                    <div>
-                        <span class="SmallTitle">자료번호</span> :
-                        <span class="SmallContents" th:text="${i.Data_Number}"></span>
-                    </div>
-                </div>
+                </th:block>
             </div>
-
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">기록정보</div>
-                <div class="ContentsInLineInContents">
-                    <div>
-                        <span class="SmallTitle">기록형식</span> :
-                        <span class="SmallContents" th:text="${i.Data_Type}"></span>
-                    </div>
-                    <div>
-                        <span class="SmallTitle">기록언어</span> :
-                        <span class="SmallContents" th:text="${i.Data_Language}"></span>
-                    </div>
-                    <div>
-                        <span class="SmallTitle">기록형태</span> :
-                        <span class="SmallContents" th:text="${i.Recording_Type}"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="LineInContents">
-                <div class="TitleInLineInContents">자료출처 · 저작권</div>
-                <div class="ContentsInLineInContents" th:text="${i.Copyright}"></div>
-            </div>
-
         </div>
     </th:block>
 
