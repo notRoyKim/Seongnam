@@ -2,6 +2,7 @@ package com.CICS.Seongnam.Controller.DispatcherCont.View;
 
 import com.CICS.Seongnam.Domain.ViewData;
 import com.CICS.Seongnam.Domain.View_Data_Info;
+import com.CICS.Seongnam.Domain.View_gusul_Info;
 import com.CICS.Seongnam.Service.View.ViewService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,55 +16,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class ViewController {
+public class NewViewController {
 
     @Autowired
     private ViewService viewService;
 
-    @RequestMapping(value = "/view", method = RequestMethod.GET)
-    public ModelAndView base(HttpServletRequest request) {
+    @RequestMapping(value = "/view2", method = RequestMethod.GET)
+    public ModelAndView view2(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         try {
-            String articleID = request.getParameter("id");
 
-            //새로운 뷰
-            int No = Integer.parseInt(request.getParameter("No"));
-            //
+            String No = request.getParameter("No");
 
-
-            ViewData viewData;
-            List<ViewData> viewDataList = new ArrayList<>();
-
-            //새로운 뷰
             View_Data_Info view_data_info;
-            view_data_info = viewService.getViewDataInfo(No);
+            View_gusul_Info view_gusul_info;
+            List<View_Data_Info> DataList = new ArrayList<>();
 
 
-            //GET METHOD NOT USED, then return to main page
-            if(articleID == null){
+            if(No == null){
                 mv.setViewName("redirect:/");
                 return mv;
             }
 
-
             //viewdata ( archive 뷰의 메타데이터를 갖고있는 class ViewData)
-            viewData = viewService.getArchives(articleID);
+            view_data_info = viewService.getViewDataInfo(No);
+
 
             //viewdata가 비어있다면 = getArchives로 Select한 결과가 없다면 404.html로 에러처리
-            if(ObjectUtils.isEmpty(viewData)){
+            if(ObjectUtils.isEmpty(view_data_info)){
                 mv.setViewName("ErrorControl/404");
                 return mv;
             }
 
-            viewDataList.add(viewData);
+            DataList.add(view_data_info);
 
-            String Media = viewData.getContent_Media();
+            String Media = viewService.getFilesByDataNo(No);
+            System.out.println(Media);
+
+            /*
             String[] Media_Path = Media.split(",");
             String Media_html = "";
 
             for(int i = 0 ; i < Media_Path.length ; i++) {
                 Media_html = Media_html + "<div><img data-u=\"image\" src=\"/Image/" + Media_Path[i] + "\" /></div>";
             }
+            */
 
             mv.setViewName("View/view");
             mv.addObject("viewDataList",viewDataList);
