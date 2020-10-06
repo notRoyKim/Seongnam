@@ -2,12 +2,9 @@ package com.CICS.Seongnam.Service.View;
 
 import com.CICS.Seongnam.Domain.ViewData;
 import com.CICS.Seongnam.Domain.View_Data_Info;
-import com.CICS.Seongnam.Domain.View_gusul_Info;
+import com.CICS.Seongnam.Domain.View_Gusul_Info;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Map;
 
 
 @Service
@@ -32,7 +29,7 @@ public class ViewService {
         return viewMapper.getMainWordsByDataNo(No);
     }
 
-    public View_gusul_Info getViewgusulInfo(String Name_No) {
-        return viewMapper.getViewgusulInfo(Name_No);
+    public View_Gusul_Info getViewGusulInfo(String Name_No) {
+        return viewMapper.getViewGusulInfo(Name_No);
     }
 }
