@@ -5,8 +5,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class View_Data_Info {
-    int No;
-    int Name_NO;
+    String No;
+    String Name_NO;
     String Title;
     String Amount;
     String Material;

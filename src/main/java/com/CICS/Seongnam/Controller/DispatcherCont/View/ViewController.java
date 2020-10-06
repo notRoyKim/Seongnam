@@ -26,18 +26,8 @@ public class ViewController {
         try {
             String articleID = request.getParameter("id");
 
-            //새로운 뷰
-            int No = Integer.parseInt(request.getParameter("No"));
-            //
-
-
             ViewData viewData;
             List<ViewData> viewDataList = new ArrayList<>();
-
-            //새로운 뷰
-            View_Data_Info view_data_info;
-            view_data_info = viewService.getViewDataInfo(No);
-
 
             //GET METHOD NOT USED, then return to main page
             if(articleID == null){

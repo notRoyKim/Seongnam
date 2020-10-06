@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class View_gusul_Info {
+public class View_Gusul_Info {
     int Name_No;
     String Name;
     String Location;

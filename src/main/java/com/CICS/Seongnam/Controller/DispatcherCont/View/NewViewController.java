@@ -1,8 +1,7 @@
 package com.CICS.Seongnam.Controller.DispatcherCont.View;
 
-import com.CICS.Seongnam.Domain.ViewData;
 import com.CICS.Seongnam.Domain.View_Data_Info;
-import com.CICS.Seongnam.Domain.View_gusul_Info;
+import com.CICS.Seongnam.Domain.View_Gusul_Info;
 import com.CICS.Seongnam.Service.View.ViewService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +28,21 @@ public class NewViewController {
             String No = request.getParameter("No");
 
             View_Data_Info view_data_info;
-            View_gusul_Info view_gusul_info;
-            List<View_Data_Info> DataList = new ArrayList<>();
-
+            View_Gusul_Info view_Gusul_info;
+            List<View_Data_Info> DataInfoList = new ArrayList<>();
+            List<View_Gusul_Info> GusulInfoList = new ArrayList<>();
 
             if(No == null){
                 mv.setViewName("redirect:/");
                 return mv;
             }
 
+            System.out.println(No);
+
             //viewdata ( archive 뷰의 메타데이터를 갖고있는 class ViewData)
             view_data_info = viewService.getViewDataInfo(No);
 
+            System.out.println(view_data_info.getNo());
 
             //viewdata가 비어있다면 = getArchives로 Select한 결과가 없다면 404.html로 에러처리
             if(ObjectUtils.isEmpty(view_data_info)){
@@ -48,22 +50,25 @@ public class NewViewController {
                 return mv;
             }
 
-            DataList.add(view_data_info);
+            view_Gusul_info = viewService.getViewGusulInfo(view_data_info.getName_NO());
+
+            GusulInfoList.add(view_Gusul_info);
+            DataInfoList.add(view_data_info);
 
             String Media = viewService.getFilesByDataNo(No);
             System.out.println(Media);
 
-            /*
             String[] Media_Path = Media.split(",");
             String Media_html = "";
 
             for(int i = 0 ; i < Media_Path.length ; i++) {
                 Media_html = Media_html + "<div><img data-u=\"image\" src=\"/Image/" + Media_Path[i] + "\" /></div>";
             }
-            */
+
 
             mv.setViewName("View/view");
-            mv.addObject("viewDataList",viewDataList);
+            mv.addObject("DataInfoList",DataInfoList);
+            mv.addObject("gusulInfoList",GusulInfoList);
             mv.addObject("Media_html",Media_html);
             return mv;
         }
