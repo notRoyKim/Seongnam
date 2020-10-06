@@ -37,12 +37,8 @@ public class NewViewController {
                 return mv;
             }
 
-            System.out.println(No);
-
             //viewdata ( archive 뷰의 메타데이터를 갖고있는 class ViewData)
             view_data_info = viewService.getViewDataInfo(No);
-
-            System.out.println(view_data_info.getNo());
 
             //viewdata가 비어있다면 = getArchives로 Select한 결과가 없다면 404.html로 에러처리
             if(ObjectUtils.isEmpty(view_data_info)){
@@ -56,7 +52,6 @@ public class NewViewController {
             DataInfoList.add(view_data_info);
 
             String Media = viewService.getFilesByDataNo(No);
-            System.out.println(Media);
 
             String[] Media_Path = Media.split(",");
             String Media_html = "";
@@ -66,9 +61,9 @@ public class NewViewController {
             }
 
 
-            mv.setViewName("View/view");
+            mv.setViewName("View/view2");
             mv.addObject("DataInfoList",DataInfoList);
-            mv.addObject("gusulInfoList",GusulInfoList);
+            mv.addObject("GusulInfoList",GusulInfoList);
             mv.addObject("Media_html",Media_html);
             return mv;
         }
