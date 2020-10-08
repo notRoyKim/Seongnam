@@ -13,10 +13,6 @@ public class ViewService {
     @Autowired
     private ViewMapper viewMapper;
 
-    public ViewData getArchives(String id) throws Exception {
-        return viewMapper.getArchives(id);
-    }
-
     public View_Data_Info getViewDataInfo(String No) {
         return viewMapper.getViewDataInfo(No);
     }

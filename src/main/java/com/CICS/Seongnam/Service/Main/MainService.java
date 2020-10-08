@@ -1,6 +1,8 @@
 package com.CICS.Seongnam.Service.Main;
 
+import com.CICS.Seongnam.Domain.Main_Rand_Slide;
 import com.CICS.Seongnam.Domain.ViewData;
+import com.CICS.Seongnam.Domain.View_Data_Info;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,5 @@ public class MainService {
     @Autowired
     private MainMapper mainMapper;
 
-    public List<ViewData> getMainRandSlider() throws  Exception {
-        return mainMapper.getMainRandSlider();
-    }
+
 }
