@@ -7,9 +7,6 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface ViewMapper {
-    @Select("SELECT * FROM Archives_System_MetaData WHERE Archive_ID = '${id}';")
-    ViewData getArchives(String id);
-
     @Select("SELECT * FROM Data_Info WHERE No = '${No}';")
     View_Data_Info getViewDataInfo(String No);
 
