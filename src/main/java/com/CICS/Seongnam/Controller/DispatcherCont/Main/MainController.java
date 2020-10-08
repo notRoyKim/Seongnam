@@ -1,12 +1,11 @@
 package com.CICS.Seongnam.Controller.DispatcherCont.Main;
 
-import com.CICS.Seongnam.Domain.ViewData;
+import com.CICS.Seongnam.Domain.Main_Rand_Slide;
 import com.CICS.Seongnam.Service.Main.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +22,7 @@ public class MainController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("Main/Base");
 
-        List<ViewData> viewDataList = mainService.getMainRandSlider();
+        List<Main_Rand_Slide> viewDataList = mainService.getMainRandSlide();
 
         mv.addObject("viewDataList",viewDataList);
         return mv;
