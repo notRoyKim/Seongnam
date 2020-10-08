@@ -20,8 +20,8 @@ public class NewViewController {
     @Autowired
     private ViewService viewService;
 
-    @RequestMapping(value = "/view2", method = RequestMethod.GET)
-    public ModelAndView view2(HttpServletRequest request) {
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView view(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         try {
 

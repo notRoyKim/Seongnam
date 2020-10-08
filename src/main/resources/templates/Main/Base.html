@@ -103,14 +103,14 @@
         <ul class="bxslider">
             <th:block th:each = "k : ${viewDataList}">
                 <li>
-                    <a th:href="@{/view/(id=${k.Archive_ID})}">
+                    <a th:href="@{/view/(No=${k.No})}">
                         <div class="slider_card card_left">
-                            <img th:attr="src=|/Image/${k.Content_Media}|">
+                            <img th:attr="src=|/Image/SN/${k.Files}|">
                         </div>
                         <div class="slider_card card_right">
                             <div class="card_title" th:text="${k.Title}"></div>
                             <hr class="card_hr">
-                            <div class="card_content" th:text="${k.Main_Contents}"></div>
+                            <div class="card_content" th:text="${k.Contents}"></div>
                         </div>
                     </a>
                 </li>
