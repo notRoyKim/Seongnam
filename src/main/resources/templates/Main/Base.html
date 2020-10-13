@@ -82,13 +82,14 @@
                             </div>
                             <div id="search_type">
                                 <table class="Tables_logo">
-                                    <tbody><tr>
-                                        <td class="search_filter_button" value="전체검색" style="background: white; color: black;">전체</td>
-                                        <td class="search_filter_button" value="무형유산 자료 검색">무형유산</td>
-                                        <td class="search_filter_button" value="아카이브즈 자료 검색" style="background: rgb(229, 229, 229); color: rgb(255, 118, 0);">아카이브즈</td>
-                                        <td class="search_filter_button" value="고문서 자료 검색">고문서</td>
-                                    </tr>
-                                    </tbody></table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="search_filter_button" value="전체검색" style="background: white; color: black;">전체</td>
+                                            <td class="search_filter_button" value="무형유산 자료 검색">무형유산</td>
+                                            <td class="search_filter_button" value="아카이브즈 자료 검색" style="background: rgb(229, 229, 229); color: rgb(255, 118, 0);">아카이브즈</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -198,10 +199,17 @@
                 width: 50%;
                 float: left;
             }
+            .card_left {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
             .card_left img{
                 margin-left: 10%;
-                height: 90%;
+                height: auto;
                 width: auto;
+                max-width: 90%;
+                max-height: 100%;
                 vertical-align: middle;
             }
             .card_title {
