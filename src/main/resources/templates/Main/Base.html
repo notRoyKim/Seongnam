@@ -97,6 +97,57 @@
             </div>
         </div>
 
+        <script>
+
+            var content_key = 1;
+
+            $( document ).ready(function() {
+                var TmpSearchKey = "";
+
+                $("#searchbox")
+                    .focus(function() {
+                        TmpSearchKey =  $("#searchbox").val();
+                        $("#searchbox").val("");
+                        console.log(TmpSearchKey);
+                    })
+                    .focusout(function() {
+                        if ($("#searchbox").val() == "") {
+                            $("#searchbox").val(TmpSearchKey);
+                        }
+                    })
+                    .keypress(function(event) {
+                        if (event.charCode ==13) Search($("#searchbox").val(), 2);
+                    });
+            });
+
+            function Search(SearchKey, SearchP) {
+                var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
+                str = SearchKey.replace(regExp,"");
+                if(str == "" || str == "아카이브즈 자료 검색"){
+                    alert("검색어를 입력해주세요.");
+                }else if(str.length < 2) {
+                    alert("검색어를 두 글자 이상으로 입력해 주세요.");
+
+                }else{
+
+                    var ESearchKey = encodeURI(SearchKey);
+
+                    var Target = "ICHPEDIA"; var TName = "무형유산";
+                    if (SearchP == 2) { Target = "ARCHIVES"; TName = "아카이브즈"; }
+                    var DataURL ="http://www.ichpedia.org/ICHJSon/ArchiveSearchData/?callback=?&SearchKey="  + ESearchKey;
+
+                    $.getJSON(DataURL, function(JSonData) {
+                        if (JSonData.TCount == 0) alert("'" +TName + "' 에는 '" + SearchKey + "' 에 대한 자료가 없습니다.",location.reload());
+                        else {
+                            if(SearchP == 1) path = "http://ichpedia.org/SearchResult/?sType=1&Keyword=" + ESearchKey + "&searchOpt=contents&";
+                            else if(SearchP == 2) path = "/SearchResult/?query=" + ESearchKey;
+                            window.location.href = path;
+                        }
+                    });
+                }
+            }
+        </script>
+
     </div>
     <div id="content">
         <!-- slider -->
