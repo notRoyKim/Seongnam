@@ -8,4 +8,8 @@ public class SearchService {
 
     @Autowired
     private SearchMapper searchMapper;
+
+    public String getSearchResultNo(String Searchword) {
+        return getSearchResultNo(Searchword);
+    }
 }
