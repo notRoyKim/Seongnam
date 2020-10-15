@@ -28,6 +28,7 @@
     float: left;
 }
 html, body {
+    font-family: 'Noto Sans', 'Nanum Gothic', sans-serif;
     margin : 0px;
     padding: 0px;
     width : 100%;
