@@ -1,5 +1,6 @@
 package com.CICS.Seongnam.Controller.DoCont;
 
+import com.CICS.Seongnam.Domain.Search_Result;
 import com.CICS.Seongnam.Service.Search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,11 @@ public class SearchJSONController {
         result = searchService.getSearchResultNo(searchWord);
 
         System.out.println(result.toString());
+
+        List<Search_Result> result2 = new ArrayList<>();
+        result2 = searchService.getSearchResultByNo(result);
+
+        System.out.println(result2);
 
         return  search_result;
     }
