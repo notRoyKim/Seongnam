@@ -10,6 +10,8 @@ public class SearchService {
     private SearchMapper searchMapper;
 
     public String getSearchResultNo(String Searchword) {
-        return getSearchResultNo(Searchword);
+        return searchMapper.getSearchResultNo(Searchword);
     }
+
+
 }
