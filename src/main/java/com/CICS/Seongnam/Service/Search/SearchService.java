@@ -17,14 +17,7 @@ public class SearchService {
         return searchMapper.getSearchResultNo(Searchword);
     }
 
-    public List<Search_Result> getSearchResultByNo(List<String> No) {
-        //
-        List<Search_Result> aa = new ArrayList<>();
-        aa = searchMapper.getSearchResultByNo(No);
-        System.out.println(aa.get(0).getT_count());
-        //
-        return searchMapper.getSearchResultByNo(No);
-    }
+    public List<Search_Result> getSearchResultByNo(List<String> No) { return searchMapper.getSearchResultByNo(No);}
 
 
 }

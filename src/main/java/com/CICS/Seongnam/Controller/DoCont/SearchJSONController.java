@@ -31,12 +31,10 @@ public class SearchJSONController {
         List<String> result = new ArrayList<>();
         result = searchService.getSearchResultNo(searchWord);
 
-        System.out.println(result.toString());
-
         List<Search_Result> result2 = new ArrayList<>();
         result2 = searchService.getSearchResultByNo(result);
 
-        System.out.println(result2);
+        System.out.println(result2.size());
 
         return  search_result;
     }
