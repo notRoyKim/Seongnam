@@ -2,10 +2,15 @@
 <HTML LANG="KR" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <TITLE> 무형문화연구소 - 디지털 아카이브즈 </TITLE>
-    <link href="/Static/DigitalArchives/Images/ICons/Archives_Icon.ico" rel="shortcut icon">
+    <link href="/DigitalArchives/Images/ICons/Archives_Icon.ico" rel="shortcut icon">
+
+    <!-- google font-->
     <link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+
     <link href="/CSS/base_top.css" rel="stylesheet" type="text/css">
+
+    <!--jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!--bxslider-->
@@ -150,8 +155,8 @@
 
     </div>
     <div id="content">
-        <!-- slider -->
-        <!-- db연동과 랜덤 불러오기 작업 필요 -->
+
+        <!-- random slider, get 4 title,content,no,image from db and render on bxslider section -->
         <ul class="bxslider">
             <th:block th:each = "k : ${viewDataList}">
                 <li>
