@@ -28,7 +28,7 @@ public class SearchJSONController {
 
         String searchWord = request.getParameter("query");
 
-        List<String> result = new ArrayList<>();
+        Map<String,String> result = new HashMap<>();
         result = searchService.getSearchResultNo(searchWord);
 
         List<Search_Result> result2 = new ArrayList<>();
