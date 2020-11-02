@@ -10,4 +10,5 @@ public class Search_Result {
     String Title;
     String Name;
     String Files;
+    int T_count;
 }

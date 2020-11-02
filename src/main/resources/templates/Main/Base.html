@@ -139,7 +139,7 @@
 
                     var Target = "ICHPEDIA"; var TName = "무형유산";
                     if (SearchP == 2) { Target = "ARCHIVES"; TName = "아카이브즈"; }
-                    var DataURL ="http://www.ichpedia.org/ICHJSon/ArchiveSearchData/?callback=?&SearchKey="  + ESearchKey;
+                    var DataURL ="/Search_JSON/?query="  + ESearchKey;
 
                     $.getJSON(DataURL, function(JSonData) {
                         if (JSonData.TCount == 0) alert("'" +TName + "' 에는 '" + SearchKey + "' 에 대한 자료가 없습니다.",location.reload());

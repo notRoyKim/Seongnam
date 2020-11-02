@@ -4,7 +4,7 @@ import com.CICS.Seongnam.Domain.Search_Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.naming.directory.SearchResult;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,6 +18,11 @@ public class SearchService {
     }
 
     public List<Search_Result> getSearchResultByNo(List<String> No) {
+        //
+        List<Search_Result> aa = new ArrayList<>();
+        aa = searchMapper.getSearchResultByNo(No);
+        System.out.println(aa.get(0).getT_count());
+        //
         return searchMapper.getSearchResultByNo(No);
     }
 
