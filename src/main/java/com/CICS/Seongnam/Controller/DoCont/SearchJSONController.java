@@ -31,10 +31,13 @@ public class SearchJSONController {
         Map<String,String> result = new HashMap<>();
         result = searchService.getSearchResultNo(searchWord);
 
+        System.out.println(result);
+
         List<Search_Result> result2 = new ArrayList<>();
         result2 = searchService.getSearchResultByNo(result);
 
-        System.out.println(result2.size());
+        search_result.put("Search_result",result2);
+        search_result.put("T_count",result2.size());
 
         return  search_result;
     }
