@@ -4,6 +4,7 @@ import com.CICS.Seongnam.Domain.Search_Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,20 +15,17 @@ public class SearchService {
     @Autowired
     private SearchMapper searchMapper;
 
-    public Map<String,String> getSearchResultNo(String Searchword) {
+    public List<Search_Result> getSearchResultNo(String Searchword) {
 
-        Map<String, String> ret_result = new HashMap<>();
+        List<Search_Result> ret_result = new ArrayList<>();
 
         List<String> sear_result = searchMapper.getSearchResultNo(Searchword);
 
         for (int i = 0; i < sear_result.size(); i++) {
-            ret_result.put(Integer.toString(i),sear_result.get(i));
+            Search_Result temp = searchMapper.getSearchResultByNo(sear_result.get(i));
+            ret_result.add(temp);
         }
 
         return ret_result;
     }
-
-    public List<Search_Result> getSearchResultByNo(Map<String,String> No) { return searchMapper.getSearchResultByNo(No);}
-
-
 }

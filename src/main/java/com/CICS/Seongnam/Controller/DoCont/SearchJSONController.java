@@ -22,23 +22,24 @@ public class SearchJSONController {
 
     @RequestMapping(value = "/Search_JSON", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> searchJSON(HttpServletRequest request) {
+    public String searchJSON(HttpServletRequest request) {
+
+        String JSON = "?(";
 
         Map<String, Object> search_result = new HashMap<>();
 
         String searchWord = request.getParameter("query");
 
         Map<String,String> result = new HashMap<>();
-        result = searchService.getSearchResultNo(searchWord);
 
-        System.out.println(result);
+        List<Search_Result> result_list = new ArrayList<>();
+        result_list = searchService.getSearchResultNo(searchWord);
 
-        List<Search_Result> result2 = new ArrayList<>();
-        result2 = searchService.getSearchResultByNo(result);
+        search_result.put("Search_result",result_list);
+        search_result.put("T_count",'[' + Integer.toString(result_list.size()) + ']');
 
-        search_result.put("Search_result",result2);
-        search_result.put("T_count",result2.size());
+        JSON = JSON + search_result + ')';
 
-        return  search_result;
+        return JSON;
     }
 }
