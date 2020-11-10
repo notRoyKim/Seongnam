@@ -1,6 +1,5 @@
 package com.CICS.Seongnam.Service.View;
 
-import com.CICS.Seongnam.Domain.ViewData;
 import com.CICS.Seongnam.Domain.View_Data_Info;
 import com.CICS.Seongnam.Domain.View_Gusul_Info;
 import org.springframework.beans.factory.annotation.Autowired;
