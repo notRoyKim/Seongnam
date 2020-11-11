@@ -57,7 +57,7 @@ public class NewViewController {
             String Media_html = "";
 
             for(int i = 0 ; i < Media_Path.length ; i++) {
-                Media_html = Media_html + "<div><img data-u=\"image\" src=\"/Image/SN/" + Media_Path[i] + "\" /></div>";
+                Media_html = Media_html + "<div><img data-u=\"image\" src=\"http://13.209.50.190/Archive_Images/" + Media_Path[i] + "\" /></div>";
             }
 
 
