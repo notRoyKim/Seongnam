@@ -23,7 +23,7 @@ public class SearchController {
         String query = request.getParameter("query");
 
         mv.setViewName("Search/Searchresult");
-
+        mv.addObject("query",query);
         return mv;
     }
 }
