@@ -142,7 +142,6 @@
                     var DataURL ="/Search_JSON/?query="  + ESearchKey;
 
                     $.getJSON(DataURL, function(JSonData) {
-                        alert(JSonData);
                         if (JSonData.T_count == 0)
                             alert("'" +TName + "' 에는 '" + SearchKey + "' 에 대한 자료가 없습니다.",location.reload());
                         else {
