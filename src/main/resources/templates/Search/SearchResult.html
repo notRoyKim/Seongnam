@@ -150,6 +150,14 @@
         </script>
 
     </div>
+    <div class="Content SearchBox">
+
+    </div>
+    <style>
+        .SearchBox {
+            min-height: calc(100% - 215px);
+        }
+    </style>
     <div class="Footer">
         <div class="footer-wrap">
             <font color="#A4A4A4">
@@ -159,25 +167,8 @@
             </font>
         </div>
 
-        <script>
-            $(document).ready(function() {
-                $( window ).scroll(function() {
-                    if( $( window ).scrollTop() != 0 ) {
-                        $("#GoTop").fadeIn();
-                    }else {
-                        $("#GoTop").fadeOut();
-                    }
-                });
-
-                $("#GoTop").click(function() {
-                    $( window ).scrollTop(0);
-                });
-            });
-        </script>
-
         <style>
-            .footer-wrap
-            {
+            .footer-wrap {
                 width: 100%;
                 background-color: white;
                 font-size: 12px;
@@ -187,13 +178,27 @@
                 margin-bottom: 10px;
             }
         </style>
-
     </div>
 </div>
 
 <div id="TopHome">
     <div id="GoTop" style="display: block;"></div>
 </div>
+<script>
+    $(document).ready(function() {
+        $( window ).scroll(function() {
+            if( $( window ).scrollTop() != 0 ) {
+                $("#GoTop").fadeIn();
+            }else {
+                $("#GoTop").fadeOut();
+            }
+        });
+
+        $("#GoTop").click(function() {
+            $( window ).scrollTop(0);
+        });
+    });
+</script>
 <style>
     #TopHome {
         width: 42px;
@@ -210,6 +215,7 @@
         background-position: -150px -500px;
         opacity: 0.6;
         float: right;
+    }
 </style>
 
 </body>
