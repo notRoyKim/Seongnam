@@ -1,4 +1,7 @@
-/*jssor slider loading skin spin css*/
+/* view 페이지 jssor slider 관련 css  */
+/* 사용 페이지 :  /view/              */
+/* 관련 컨트롤러(1) : ViewController  */
+
 .jssorl-009-spin img {
     animation-name: jssorl-009-spin;
     animation-duration: 1.6s;
