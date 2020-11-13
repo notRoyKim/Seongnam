@@ -61,7 +61,7 @@ public class ViewController {
             }
 
 
-            mv.setViewName("View/view2");
+            mv.setViewName("view2");
             mv.addObject("DataInfoList",DataInfoList);
             mv.addObject("GusulInfoList",GusulInfoList);
             mv.addObject("Media_html",Media_html);
