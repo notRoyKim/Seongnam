@@ -1,0 +1,57 @@
+/* 메인 페이지 bxslider 관련 css       */
+/* 사용 페이지 :  /                   */
+/* 관련 컨트롤러(1) : MainController  */
+
+.bxslider {
+    width:100%;
+}
+.bxslider li{
+    height: 400px;
+}
+.slider_card {
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+.card_left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card_left img{
+    margin-left: 10%;
+    height: auto;
+    width: auto;
+    max-width: 90%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+.card_title {
+    width: 100%;
+    float: left;
+    height: 49px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 20px;
+    margin-top: 90px;
+    color: #777777;
+}
+.card_hr {
+    float: left;
+    width: calc(100% - 80px);
+    height: 2px;
+    margin-left: 20px;
+    border-bottom: 2px solid #555555;
+}
+.card_content {
+    width: calc(100% - 60px);
+    float: left;
+    height: 349px;
+    margin: 20px 20px 20px 20px;
+    text-align: justify;
+    color: black;
+}
+.bx-wrapper {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}

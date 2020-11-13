@@ -18,6 +18,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
+    <!--bxslider 관련 커스텀 css-->
+    <link href="/CSS/Main_bxslider.css" rel="stylesheet" type="text/css">
+
     <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=UTF-8">
 </head>
 <body>
@@ -174,7 +177,7 @@
                 </li>
             </th:block>
         </ul>
-
+        <!-- 테마, 스페셜리스트(minjung20.org 식 디자인 참조..) css -->
         <style>
             .Content_top_Line {
                 border-top: 1px solid #dfdfdf;
@@ -244,61 +247,7 @@
                 text-align: justify;
             }
         </style>
-        <style>
-            .bxslider {
-                width:100%;
-            }
-            .bxslider li{
-                height: 400px;
-            }
-            .slider_card {
-                height: 100%;
-                width: 50%;
-                float: left;
-            }
-            .card_left {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .card_left img{
-                margin-left: 10%;
-                height: auto;
-                width: auto;
-                max-width: 90%;
-                max-height: 100%;
-                vertical-align: middle;
-            }
-            .card_title {
-                width: 100%;
-                float: left;
-                height: 49px;
-                font-size: 20px;
-                font-weight: 700;
-                margin-left: 20px;
-                margin-top: 90px;
-                color: #777777;
-            }
-            .card_hr {
-                float: left;
-                width: calc(100% - 80px);
-                height: 2px;
-                margin-left: 20px;
-                border-bottom: 2px solid #555555;
-            }
-            .card_content {
-                width: calc(100% - 60px);
-                float: left;
-                height: 349px;
-                margin: 20px 20px 20px 20px;
-                text-align: justify;
-                color: black;
-            }
-            .bx-wrapper {
-                -webkit-box-shadow: none;
-                box-shadow: none;
-            }
-        </style>
+
         <script type="text/javascript">
             //<![CDATA[
             $(document).ready(function() {
