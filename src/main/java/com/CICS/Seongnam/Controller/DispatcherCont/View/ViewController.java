@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class NewViewController {
+public class ViewController {
 
     @Autowired
     private ViewService viewService;
