@@ -8,6 +8,7 @@ import lombok.Setter;
 public class Search_Result {
     String No;
     String Title;
+    String Data_Background;
     String Name;
     String Files;
 }
