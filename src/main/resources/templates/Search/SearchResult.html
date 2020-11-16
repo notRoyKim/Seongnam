@@ -273,13 +273,17 @@
         }
 
         function MakeDIV(Val) {
+            //링크 주소가 view를 가리키고, No를 get으로 받는 링크를 가진 grid를 만듬
             var StrTmp = "<div class='grid' Value = " + Val.no + "><a href = /view/?No=" + Val.no + " target='blank'>";
             //var StrTmp = "<div class='grid' Value = " + Val.no + "><a href = /view/?query=" +  SearchValues + "&no=" + Val.ID + " target='blank'>";
 
-            Description_ListView = Val.Description;
+            //자료배경
+            Background_ListView = Val.Data_Background;
 
-            if(Val.ImgSrc != "")  StrTmp += "<div class='imgholder' align = 'center'><img src='" + Val.ImgSrc + "'/></div>";
-            StrTmp += "<strong>" +  Val.Title  + "</strong><p>" + Description_ListView + "</p><div class='meta'>" + Val.Writer + "</div></a></div>";
+            //만일 DB에서 가져온 값에 사진이 있다면
+            if(Val.files != "")  StrTmp += "<div class='imgholder' align = 'center'><img src='" + Val.files + "'/></div>";
+
+            StrTmp += "<strong>" +  Val.title  + "</strong><p>" + Background_ListView + "</p><div class='meta'>" + Val.name + "</div></a></div>";
 
             return StrTmp;
         }
