@@ -9,6 +9,8 @@
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
     <!--jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!--blocksit-->
+    <script src="/JS/blocksit.js"></script>
     <!-- 커스텀 css-->
     <link href="/CSS/base_top.css" rel="stylesheet" type="text/css">
 </head>
@@ -177,11 +179,8 @@
 
         // query = 검색어
         /*<![CDATA[*/
-        var query = [[${query}]];
+        var query = "[[${query}]]";
         /*]]>*/
-
-        var SearchValues = encodeURI(query);
-
 
         $(window).ready(function() {
             //Content > Searchbox의 너비를 받아옴
@@ -208,7 +207,11 @@
 
             // 화면 크기 변경시 grid 갯수 다시 계산
             $(window).resize(function() {
-                $('.SearchBox').BlocksIt({ numOfCol: 4, offsetX: 5, offsetY: 5 });
+                $('.SearchBox').BlocksIt ({
+                    numOfCol: 4,
+                    offsetX: 5,
+                    offsetY: 5
+                });
             });
 
             // 휠 내렸을때 Data 추가 로드
@@ -230,28 +233,34 @@
                 Flag = false;
 
                 //JSON 구현 필요 11.16
-                var DataURL = "/Search_JSON/?query="  + SearchValues +  "&Page=" + Page + "&NumPage=" + NuminPage ;
+                var DataURL = "/Search_JSON/?query="  + query +  "&Page=" + Page + "&NumPage=" + NuminPage ;
 
                 $.getJSON(DataURL, function(JSonData) {
 
-                    UrlEncodedTerm = encodeURI(JSonData.AnalyzedTerms)
-
-                    $.each(JSonData.Data, function(Key, Val) {
-                        var Temp = MakeDIV(Val, UrlEncodedTerm);
+                    //Div태그 작성
+                    $.each(JSonData.Search_result, function(Key, Val) {
+                        var Temp = MakeDIV(Val);
                         ListArray.push(Temp);
                     });
                 })
                     .done(function() {
-                        $('#box_house').imagesLoaded( function(){
-                            $('#box_house').BlocksIt({ numOfCol: 4,	offsetX: 0,	offsetY: 5 }); Page++; Flag = true;
+                        $('.SearchBox').imagesLoaded( function(){
+                            $('.SearchBox').BlocksIt({
+                                numOfCol: 4,
+                                offsetX: 5,
+                                offsetY: 5
+                            });
+                            Page++;
+                            Flag = true;
                         });
                     });
             }
         }
-
+        /*
         function Scroll_DataLoad() {
             if(Flag) {
                 Flag = false;
+
                 var DataURL = "/Search_JSON/?query="  + SearchValues +  "&Page=" + Page + "&NumPage=" + NuminPage ;
 
                 $.getJSON(DataURL, function(JSonData) {
@@ -271,6 +280,7 @@
                     });
             }
         }
+        */
 
         function MakeDIV(Val) {
             //링크 주소가 view를 가리키고, No를 get으로 받는 링크를 가진 grid를 만듬
@@ -288,6 +298,7 @@
             return StrTmp;
         }
     </script>
+
     <div class="Footer">
         <div class="footer-wrap">
             <font color="#A4A4A4">
