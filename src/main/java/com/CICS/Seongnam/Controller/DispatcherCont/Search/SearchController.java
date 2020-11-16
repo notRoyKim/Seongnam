@@ -27,7 +27,7 @@ public class SearchController {
         List<Search_Result> result_list = new ArrayList<>();
         result_list = searchService.getSearchResultNo(query);
 
-        mv.setViewName("Search/Searchresult");
+        mv.setViewName("Search/SearchResult");
         mv.addObject("query",query);
         mv.addObject("result_list",result_list);
         return mv;
