@@ -51,15 +51,17 @@
             <img src="/Static/close_button.png" style="width:100%; height:100%;">
         </div>
         <div class="header_link">
+
             <div id="top_history">
                 <a class="top_history_a" href="http://ichpedia.org/">
                     <img src="/Image/gohome.png" class="gohomebt">
                 </a>
                 <div class="history_nonimg" stlye="padding-bottom : 40px">
                     <div class="header_blank_dot">·</div>
-                    <a class="top_history_a" href="/" th:inline="text">아카이브즈([[${query}]] : 건)</a>
+                    <a class="top_history_a" href="/" th:inline="text">아카이브즈([[${query}]] : [[${result_count}]]건)</a>
                 </div>
             </div>
+
             <a class="top_history_a top_login_btn" href="" target="_blank" onclick="click_login('loginview'); return false;">
                 로그인 | 회원가입
             </a>
@@ -149,13 +151,146 @@
 
     </div>
     <div class="Content SearchBox">
-
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
     </div>
+    <!--searchbox FHD UI 최소길이 설정-->
     <style>
         .SearchBox {
-            min-height: calc(100% - 215px);
+            min-height: 760px;
         }
     </style>
+    <!--search 관련 스크립트-->
+    <script>
+        var ListArray = Array();
+
+        var Page = 0;
+        var NuminPage = 40;
+
+        var Flag = true;
+
+        // query = 검색어
+        /*<![CDATA[*/
+        var query = [[${query}]];
+        /*]]>*/
+
+        var SearchValues = encodeURI(query);
+
+
+        $(window).ready(function() {
+            //Content > Searchbox의 너비를 받아옴
+            var width = $(".SearchBox").width();
+
+            //mobile 환경(가로너비 768이하)에선 가로줄에 1개만, 아닐경우(PC 등)에서는 4개가 출력되도록
+            $('.SearchBox').imagesLoaded( function(){
+                if (width<=768)
+                {
+                    $('.SearchBox').BlocksIt({
+                        numOfCol:1,
+                        offsetX:5,
+                        offsetY:5
+                    });
+                }
+                else {
+                    $('.SearchBox').BlocksIt({
+                        numOfCol:4,
+                        offsetX:5,
+                        offsetY:5
+                    });
+                }
+            });
+
+            // 화면 크기 변경시 grid 갯수 다시 계산
+            $(window).resize(function() {
+                $('.SearchBox').BlocksIt({ numOfCol: 4, offsetX: 5, offsetY: 5 });
+            });
+
+            // 휠 내렸을때 Data 추가 로드
+            $(window).scroll(function()
+            {
+                if (document.body.scrollHeight - $(this).scrollTop()  <= $(this).height())
+                {
+                    Scroll_DataLoad();
+                }
+            });
+
+            DataLoad();
+        });
+        
+        function DataLoad() {
+            if(Flag) {
+                Flag = false;
+                var DataURL = "/Search_JSON/?query="  + SearchValues +  "&Page=" + Page + "&NumPage=" + NuminPage ;
+
+                $.getJSON(DataURL, function(JSonData) {
+                    $("#TotalCount").append(":" + JSonData.TCount[0] + "건");
+
+                    UrlEncodedTerm = encodeURI(JSonData.AnalyzedTerms)
+
+                    $.each(JSonData.Data, function(Key, Val) {
+                        var Temp = MakeDIV(Val, UrlEncodedTerm);
+
+                        ListArray.push(Temp);
+
+                        if (ListType["전체"] || ListType[$(Temp).attr("DType")]) {
+                            $('#box_house').append($(Temp))
+                        }
+                    });
+                })
+                    .done(function() {
+                        $('#box_house').imagesLoaded( function(){
+                            $('#box_house').BlocksIt({ numOfCol: 4,	offsetX: 0,	offsetY: 5 }); Page++; Flag = true;
+                        });
+                    });
+            }
+        }
+
+        function Scroll_DataLoad() {
+            if(Flag) {
+                Flag = false;
+                var DataURL = "http://ichpedia.org/ICHJSon/ArchiveSearchData/?callback=?&SearchKey="  + SearchValues +  "&Page=" + Page + "&NumPage=" + NuminPage ;
+
+                $.getJSON(DataURL, function(JSonData) {
+
+                    UrlEncodedTerm = encodeURI(JSonData.AnalyzedTerms)
+
+                    $.each(JSonData.Data, function(Key, Val) {
+                        var Temp = MakeDIV(Val, UrlEncodedTerm);
+
+                        ListArray.push(Temp);
+
+                        if (ListType["전체"] || ListType[$(Temp).attr("DType")]) {
+                            $('#box_house').append($(Temp))
+                        }
+                    });
+                })
+                    .done(function() {
+                        $('#box_house').imagesLoaded( function(){
+                            $('#box_house').BlocksIt({ numOfCol: 4,	offsetX: 0,	offsetY: 5 }); Page++; Flag = true;
+                        });
+                    });
+            }
+        }
+
+        function MakeDIV(Val, Terms) {
+            ListCount["전체"]++; ListCount[Val.Type]++;
+
+            var StrTmp = "<div class='grid' Value = " + Val.ID + " DType='" + Val.Type + "'><a href = /NewDA/viewpage/?key=" +  SearchValues + "&ArchivesID=" + Val.ID + "&AnalyzedTerms=" + Terms +" target='blank'>";
+
+            Description_ListView = Val.Description;
+
+            if(Val.ImgSrc != "")  StrTmp += "<div class='imgholder' align = 'center'><img src='" + Val.ImgSrc + "'/></div>";
+            StrTmp += "<strong>" +  Val.Title  + "</strong><p>" + Description_ListView + "</p><div class='meta'>" + Val.Writer + "</div></a></div>";
+
+            return StrTmp;
+        }
+    </script>
     <div class="Footer">
         <div class="footer-wrap">
             <font color="#A4A4A4">
