@@ -155,27 +155,19 @@
 
     </div>
     <div class="Content SearchBox">
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
     </div>
     <!--searchbox FHD UI 최소길이 설정-->
     <style>
         .SearchBox {
+            position: relative;
             min-height: 760px;
         }
     </style>
     <!--search 관련 스크립트-->
     <script>
         var ListArray = Array();
-
         var Page = 0;
-        var NuminPage = 40;
+        var NuminPage = 20;
 
         var Flag = true;
 
@@ -207,7 +199,7 @@
                 }
             });
 
-            // 화면 크기 변경시 grid 갯수 다시 계산
+            // 화면 크기 변경시 grid 다시 계산
             $(window).resize(function() {
                 $('.SearchBox').BlocksIt ({
                     numOfCol: 4,
@@ -245,6 +237,7 @@
                     $.each(JSonData.Search_result, function(Key, Val) {
                         var Temp = MakeDIV(Val);
                         ListArray.push(Temp);
+                        $(".SearchBox").append($(Temp));
                     });
                 })
                     .done(function() {
@@ -292,16 +285,60 @@
             //var StrTmp = "<div class='grid' Value = " + Val.no + "><a href = /view/?query=" +  SearchValues + "&no=" + Val.ID + " target='blank'>";
 
             //자료배경
-            Background_ListView = Val.Data_Background;
+            Background_ListView = Val.data_Background;
 
             //만일 DB에서 가져온 값에 사진이 있다면
-            if(Val.files != "")  StrTmp += "<div class='imgholder' align = 'center'><img src='" + Val.files + "'/></div>";
+            if(Val.files != "")  StrTmp += "<div class='imgholder' align = 'center'><img src='http://13.209.50.190/Archive_Images/" + Val.files + "'/></div>";
 
             StrTmp += "<strong>" +  Val.title  + "</strong><p>" + Background_ListView + "</p><div class='meta'>" + Val.name + "</div></a></div>";
 
             return StrTmp;
         }
     </script>
+    <!--Search 결과값 blocksit Grid들의 스타일 -->
+    <style>
+        .grid {
+            min-height: 100px;
+            padding: 10px;
+            background: #fff;
+            margin: 5px;
+            font-size: 15px;
+            text-align: justify;
+            color: #808285;
+            float: left;
+            box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+            -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+            -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+            -webkit-transition: top 1s ease, left 1s ease;
+            -moz-transition: top 1s ease, left 1s ease;
+            -o-transition: top 1s ease, left 1s ease;
+            -ms-transition: top 1s ease, left 1s ease;
+        }
+        .grid > a {
+            text-decoration: none;
+        }
+        .grid strong {
+            border-bottom: 1px solid #EEEEEE;
+            margin-top: 10px;
+            display: block;
+            font-size: 17px;
+            color: #000000;
+        }
+        .grid p {
+            color: black;
+        }
+        .grid .meta {
+            text-align: right;
+            padding-right: 3px;
+            color: #777;
+            font-style: italic;
+        }
+        .grid .imgholder img {
+            max-width: 100%;
+            background: white;
+            display: block;
+        }
+    </style>
 
     <div class="Footer">
         <div class="footer-wrap">

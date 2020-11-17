@@ -37,6 +37,7 @@ public class SearchService {
 
         for (int i = 0; i < sear_result.size(); i++) {
             Search_Result temp = searchMapper.getSearchResultByNo(sear_result.get(i));
+            temp.setFiles(temp.getFiles().split(",")[0]);
             ret_result.add(temp);
         }
 
