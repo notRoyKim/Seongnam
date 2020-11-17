@@ -208,8 +208,6 @@
                 });
             });
 
-            // 휠 내렸을때 Data 추가 로드
-            /*
             $(window).scroll(function()
             {
                 if (document.body.scrollHeight - $(this).scrollTop()  <= $(this).height())
@@ -217,8 +215,6 @@
                     Scroll_DataLoad();
                 }
             });
-            */
-
             DataLoad();
         });
 
@@ -228,9 +224,7 @@
                 //동기를 위해 Lock을 할 때 Flag
                 Flag = false;
 
-                //JSON 구현 필요 11.16
                 var DataURL = "/Search_JSON/?query="  + query +  "&Page=" + Page + "&NumPage=" + NuminPage ;
-
                 $.getJSON(DataURL, function(JSonData) {
 
                     //Div태그 작성
@@ -253,31 +247,34 @@
                     });
             }
         }
-        /*
+
         function Scroll_DataLoad() {
             if(Flag) {
+
                 Flag = false;
 
-                var DataURL = "/Search_JSON/?query="  + SearchValues +  "&Page=" + Page + "&NumPage=" + NuminPage ;
-
+                var DataURL = "/Search_JSON/?query="  + query +  "&Page=" + Page + "&NumPage=" + NuminPage ;
                 $.getJSON(DataURL, function(JSonData) {
 
-                    UrlEncodedTerm = encodeURI(JSonData.AnalyzedTerms)
-
-                    $.each(JSonData.Data, function(Key, Val) {
-                        var Temp = MakeDIV(Val, UrlEncodedTerm);
-
+                    $.each(JSonData.Search_result, function(Key, Val) {
+                        var Temp = MakeDIV(Val);
                         ListArray.push(Temp);
+                        $(".SearchBox").append($(Temp));
                     });
                 })
                     .done(function() {
-                        $('#box_house').imagesLoaded( function(){
-                            $('#box_house').BlocksIt({ numOfCol: 4,	offsetX: 0,	offsetY: 5 }); Page++; Flag = true;
+                        $('.SearchBox').imagesLoaded( function(){
+                            $('.SearchBox').BlocksIt({
+                                numOfCol: 4,
+                                offsetX: 5,
+                                offsetY: 5
+                            });
+                            Page++;
+                            Flag = true;
                         });
                     });
             }
         }
-        */
 
         function MakeDIV(Val) {
             //링크 주소가 view를 가리키고, No를 get으로 받는 링크를 가진 grid를 만듬
@@ -298,6 +295,7 @@
     <!--Search 결과값 blocksit Grid들의 스타일 -->
     <style>
         .grid {
+            width: calc(25% - 30px);
             min-height: 100px;
             padding: 10px;
             background: #fff;
