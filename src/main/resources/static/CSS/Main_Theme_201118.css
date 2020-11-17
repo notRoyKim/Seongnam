@@ -1,0 +1,90 @@
+/* 메인 페이지 테마 관련 css           */
+/* 사용 페이지 :  없음                */
+/* 관련 컨트롤러(1) :                 */
+
+.Content_top_Line {
+    border-top: 1px solid #dfdfdf;
+}
+#Main_Themes_menu .menuLinkt {
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    font-size: 15px;
+    font-weight: bold;
+}
+#Main_Themes_menu ul li {
+    list-style: none;
+    float: left;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 10px;
+}
+#Main_Themes_menu ul {
+    padding-left: 0;
+}
+#Main_Themes_menu {
+    height: 50px;
+    width: 700px;
+    padding-bottom: 10px;
+}
+#Main_TS_cap {
+    border-top: 1px solid #dfdfdf;
+    padding-top: 15px;
+}
+.Theme_cont {
+    margin-bottom: 30px;
+    width: 273px;
+    float: left;
+    text-align: center;
+}
+.theme_img {
+    min-width: 10%;
+    width: 100%;
+    max-height: 138px;
+    float: left;
+    text-align: center;
+}
+.theme_img img {
+    max-width: 100%;
+    max-height: 138px;
+}
+.theme_text {
+    width: 100%;
+}
+.Theme_Title {
+    font-size: 17px;
+    font-weight: 700;
+    height: 30px;
+    line-height: 30px;
+    color: #3e8ac6;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.Theme_Contents {
+    line-height: 150%;
+    color: #808285;
+    padding: 0 10px 10px 0;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: justify;
+}
+.special_img { min-width : 10%; width:100%;  max-height:138px; float:left; text-align : center; }
+.special_img img{ max-width:100%;  max-height:138px;}
+.Specialist_cont { margin-bottom:30px; width:273px; float : left; text-align : center; }
+.Speciallist { width: 100%; margin-top:10px; height:400px; }
+.special_text {  width: 100%;}
+.Special_Contents{
+    line-height: 150%;
+    color: #808285;
+    padding: 0px 10px 10px 0px;
+    font-size: 15px;
+    font-weight: 400;
+    text-align:justify;
+}
+.Special_Title{
+    font-size:17px; font-weight:700;
+    height:30px; line-height:30px;
+    color:#3e8ac6;
+    white-space: nowrap; text-overflow: ellipsis;
+}

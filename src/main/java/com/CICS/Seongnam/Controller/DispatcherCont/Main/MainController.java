@@ -31,7 +31,7 @@ public class MainController {
     @RequestMapping(value = "/Intro", method = RequestMethod.GET)
     public  ModelAndView Intro(HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("Main/Base");
+        mv.setViewName("Main/Base_201118");
 
         List<Main_Rand_Slide> viewDataList = mainService.getCustomSlide();
         mv.addObject("viewDataList",viewDataList);
