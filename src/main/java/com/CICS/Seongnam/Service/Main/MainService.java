@@ -30,12 +30,12 @@ public class MainService {
         List<Main_Rand_Slide> tempList = new ArrayList<>();
         tempList = mainMapper.getCustomSlide();
 
-        for(int i = 0; i < 4 ; i++) {
+        for(int i = 0; i < 6 ; i++) {
             Main_Rand_Slide tempRandSlideObject = tempList.get(i);
             tempRandSlideObject.setFiles(tempRandSlideObject.getFiles().split(",")[0]);
             tempList.set(i,tempRandSlideObject);
         }
 
-        return tempList
+        return tempList;
     }
 }
