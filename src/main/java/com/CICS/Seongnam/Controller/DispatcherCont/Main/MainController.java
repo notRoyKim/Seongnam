@@ -27,4 +27,14 @@ public class MainController {
         mv.addObject("viewDataList",viewDataList);
         return mv;
     }
+    //11/18 시연회용
+    @RequestMapping(value = "/Intro", method = RequestMethod.GET)
+    public  ModelAndView Intro(HttpServletRequest request) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("Main/Base");
+
+        List<Main_Rand_Slide> viewDataList = mainService.getCustomSlide();
+        mv.addObject("viewDataList",viewDataList);
+        return mv;
+    }
 }
