@@ -11,6 +11,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!--blocksit-->
     <script src="/JS/blocksit.js"></script>
+    <!--ImagesLoaded min-->
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <!-- 커스텀 css-->
     <link href="/CSS/base_top.css" rel="stylesheet" type="text/css">
 </head>
@@ -215,6 +217,7 @@
             });
 
             // 휠 내렸을때 Data 추가 로드
+            /*
             $(window).scroll(function()
             {
                 if (document.body.scrollHeight - $(this).scrollTop()  <= $(this).height())
@@ -222,6 +225,7 @@
                     Scroll_DataLoad();
                 }
             });
+            */
 
             DataLoad();
         });

@@ -24,6 +24,7 @@ public class SearchController {
 
         String query = request.getParameter("query");
 
+        //기존 소스 구조가 조금 비효율적임.. 추후에 알고리즘을 수정할 필요가 있음.
         List<Search_Result> result_list = new ArrayList<>();
         result_list = searchService.getSearchResultNo(query);
         int result_count = result_list.size();
