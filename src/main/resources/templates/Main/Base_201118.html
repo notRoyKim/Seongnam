@@ -169,14 +169,43 @@
         <div id="manual_popupX" onclick="search_popupX()" style="position:absolute;z-index:1; cursor:pointer">
             <img src="/Static/close_button.png" style="width:100%; height:100%;">
         </div>
+        <script>
+            $( document ).ready(function() {
+
+                $(document).mouseup(function (e){
+                    var container = $("#manual_popup");
+                    if(container.has(e.target).length == 0)
+                        container.fadeOut();
+                    $("#manual_popupX").fadeOut();
+                });
+
+            });
+
+            function abspos(e){
+                return this;
+            }
+
+
+            function search_popup(e)
+            {
+                pos = abspos(e);
+                $("#manual_popup").fadeIn();
+            }
+            function search_popupX()
+            {
+                $("#manual_popup").fadeOut();
+                $("#manual_popupX").fadeOut();
+
+            }
+        </script>
         <div class="header_link">
             <div id="top_history">
-                <a class="top_history_a" href="/">
+                <a class="top_history_a" href="/Intro">
                     <img src="Image/gohome.png" class="gohomebt">
                 </a>
                 <div class="history_nonimg" stlye="padding-bottom : 40px">
                     <div class="header_blank_dot">·</div>
-                    <a class="top_history_a" href="/">아카이브즈</a>
+                    <a class="top_history_a" href="/Intro">아카이브즈</a>
                 </div>
             </div>
             <a class="top_history_a top_login_btn" href="" target="_blank" onclick="click_login('loginview'); return false;">
