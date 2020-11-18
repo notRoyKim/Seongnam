@@ -55,6 +55,36 @@
         <div id="manual_popupX" onclick="search_popupX()" style="position:absolute;z-index:1; cursor:pointer">
             <img src="/Static/close_button.png" style="width:100%; height:100%;">
         </div>
+        <!--popup 관련 스크립트-->
+        <script>
+            $( document ).ready(function() {
+
+                $(document).mouseup(function (e){
+                    var container = $("#manual_popup");
+                    if(container.has(e.target).length == 0)
+                        container.fadeOut();
+                    $("#manual_popupX").fadeOut();
+                });
+
+            });
+
+            function abspos(e){
+                return this;
+            }
+
+
+            function search_popup(e)
+            {
+                pos = abspos(e);
+                $("#manual_popup").fadeIn();
+            }
+            function search_popupX()
+            {
+                $("#manual_popup").fadeOut();
+                $("#manual_popupX").fadeOut();
+
+            }
+        </script>
         <div class="header_link">
             <div id="top_history">
                 <a class="top_history_a" href="/">
@@ -88,7 +118,7 @@
                                     <tbody>
                                         <tr>
                                             <td class="search_filter_button" value="전체검색" style="background: white; color: black;">전체</td>
-                                            <td class="search_filter_button" value="무형유산 자료 검색">무형유산</td>
+                                            <td class="search_filter_button" value="무형유산">무형유산</td>
                                             <td class="search_filter_button" value="아카이브즈 자료 검색" style="background: rgb(229, 229, 229); color: rgb(255, 118, 0);">아카이브즈</td>
                                         </tr>
                                     </tbody>
@@ -99,7 +129,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- 검색 관련 스크립트-->
         <script>
 
             var content_key = 1;
@@ -150,6 +180,16 @@
                     });
                 }
             }
+        </script>
+
+        <!--검색 버튼 관련 스크립트-->
+        <script>
+            $('td[value=전체검색]').click(function () {
+                window.location.href = "/";
+            })
+            $('td[value=무형유산]').click(function () {
+                window.location.href = "http://www.ichpedia.org/";
+            })
         </script>
 
     </div>

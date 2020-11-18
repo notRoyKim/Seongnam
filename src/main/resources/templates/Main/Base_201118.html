@@ -169,6 +169,7 @@
         <div id="manual_popupX" onclick="search_popupX()" style="position:absolute;z-index:1; cursor:pointer">
             <img src="/Static/close_button.png" style="width:100%; height:100%;">
         </div>
+        <!--popup 관련 스크립트-->
         <script>
             $( document ).ready(function() {
 
@@ -294,7 +295,15 @@
                 }
             }
         </script>
-
+        <!--검색 버튼 관련 스크립트-->
+        <script>
+            $('td[value=전체검색]').click(function () {
+                window.location.href = "/";
+            })
+            $('td[value=무형유산]').click(function () {
+                window.location.href = "http://www.ichpedia.org/";
+            })
+        </script>
     </div>
     <div id="content">
 
@@ -414,53 +423,102 @@
                 <div class="Content_top_Line">
                     <div id="Main_Special_menu">
                         <ul>
-                            <li><a class="menuLinks" specialnum="1" href="javascript:;" style="color:#000000; font-weight:800;">김귀환</a></li>
+                            <li><a class="menuLinks Special1" specialnum="1" href="javascript:;" style="color:#000000; font-weight:800;">김귀환</a></li>
+                            <li><a class="menuLinks Special2" specialnum="2" href="javascript:;" style="color: #3e8ac6">이영림</a></li>
                         </ul>
                     </div>
                     <div id="Main_TS_cap">
-                        <div id="Special_1" class="Specialist_cont" style="float:left;">
-                            <a id="Special_1_link" href="/view2?No=56">
-                                <div id="Special_1_img" class="special_img" align="center">
-                                    <img id="Special1imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH09172020김귀환0001.JPG"></div>
-                                <div id="Special_1_txt" class="special_text">
-                                    <div class="Special_Title" id="Special_1_title">김귀환 : 동방생명 앨범</div>
-                                    <div class="Special_Contents" id="Special_1_contents"></div>
-                                </div>
-                            </a>
-                        </div>
+                        <div class="Special_1">
+                            <div id="Special_1" class="Specialist_cont" style="float:left;">
+                                <a id="Special_1_link" href="/view2?No=56">
+                                    <div id="Special_1_img" class="special_img" align="center">
+                                        <img id="Special1imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH09172020김귀환0001.JPG"></div>
+                                    <div id="Special_1_txt" class="special_text">
+                                        <div class="Special_Title" id="Special_1_title">김귀환 : 동방생명 앨범</div>
+                                        <div class="Special_Contents" id="Special_1_contents"></div>
+                                    </div>
+                                </a>
+                            </div>
 
-                        <div id="Special_2" class="Specialist_cont" style="float:left;">
-                            <a id="Special_2_link" href="/view2?No=57">
-                                <div id="Special_2_img" class="special_img" align="center">
-                                    <img id="Special2imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH09172020김귀환0007.jpg"></div>
-                                <div id="Special_2_txt" class="special_text">
-                                    <div class="Special_Title" id="Special_2_title">김귀환 : 세 자매 사진</div>
-                                    <div class="Special_Contents" id="Special_2_contents">
+                            <div id="Special_2" class="Specialist_cont" style="float:left;">
+                                <a id="Special_2_link" href="/view2?No=57">
+                                    <div id="Special_2_img" class="special_img" align="center">
+                                        <img id="Special2imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH09172020김귀환0007.jpg"></div>
+                                    <div id="Special_2_txt" class="special_text">
+                                        <div class="Special_Title" id="Special_2_title">김귀환 : 세 자매 사진</div>
+                                        <div class="Special_Contents" id="Special_2_contents">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
+                            <div id="Special_3" class="Specialist_cont" style="float:left;">
+                                <a id="Special_3_link" href="/view2?No=58">
+                                    <div id="Special_3_img" class="special_img" align="center">
+                                        <img id="Special3imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH09172020김귀환0009.jpg"></div>
+                                    <div id="Special_3_txt" class="special_text">
+                                        <div class="Special_Title" id="Special_3_title">김귀환 : 친구들과 사진</div>
+                                        <div class="Special_Contents" id="Special_3_contents">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div id="Special_4" class="Specialist_cont" style="float:left;">
+                                <a id="Special_4_link" href="/view2?No=59">
+                                    <div id="Special_4_img" class="special_img" align="center">
+                                        <img id="Special4imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH09172020김귀환0016.JPG"></div>
+                                    <div id="Special_4_txt" class="special_text">
+                                        <div class="Special_Title" id="Special_4_title">김귀환 : 청첩장</div>
+                                        <div class="Special_Contents" id="Special_4_contents">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <div id="Special_3" class="Specialist_cont" style="float:left;">
-                            <a id="Special_3_link" href="/view2?No=58">
-                                <div id="Special_3_img" class="special_img" align="center">
-                                    <img id="Special3imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH09172020김귀환0009.jpg"></div>
-                                <div id="Special_3_txt" class="special_text">
-                                    <div class="Special_Title" id="Special_3_title">김귀환 : 청첩장</div>
-                                    <div class="Special_Contents" id="Special_3_contents">
+                        <div class="Special_2">
+                            <div id="Special_1" class="Specialist_cont" style="float:left;">
+                                <a id="Special_1_link" href="/view2?No=22">
+                                    <div id="Special_1_img" class="special_img" align="center">
+                                        <img id="Special1imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH26092020LYLKMS0002.jpg"></div>
+                                    <div id="Special_1_txt" class="special_text">
+                                        <div class="Special_Title" id="Special_1_title">서울올림픽 성화봉송 달리기 대회 기념 메달</div>
+                                        <div class="Special_Contents" id="Special_1_contents"></div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div id="Special_4" class="Specialist_cont" style="float:left;">
-                            <a id="Special_4_link" href="/view2?No=59">
-                                <div id="Special_4_img" class="special_img" align="center">
-                                    <img id="Special4imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH09172020김귀환0016.JPG"></div>
-                                <div id="Special_4_txt" class="special_text">
-                                    <div class="Special_Title" id="Special_4_title">김귀환 : 동방생명 앨범</div>
-                                    <div class="Special_Contents" id="Special_4_contents">
+                                </a>
+                            </div>
+
+                            <div id="Special_2" class="Specialist_cont" style="float:left;">
+                                <a id="Special_2_link" href="/view2?No=24">
+                                    <div id="Special_2_img" class="special_img" align="center">
+                                        <img id="Special2imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH26092020LYLKMS0007.jpg"></div>
+                                    <div id="Special_2_txt" class="special_text">
+                                        <div class="Special_Title" id="Special_2_title">전두환총재 기념 메달</div>
+                                        <div class="Special_Contents" id="Special_2_contents">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
+                            <div id="Special_3" class="Specialist_cont" style="float:left;">
+                                <a id="Special_3_link" href="/view2?No=25">
+                                    <div id="Special_3_img" class="special_img" align="center">
+                                        <img id="Special3imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH26092020LYLKMS0012.jpg"></div>
+                                    <div id="Special_3_txt" class="special_text">
+                                        <div class="Special_Title" id="Special_3_title">제 10회 아시아경기대회 참가 기념 메달</div>
+                                        <div class="Special_Contents" id="Special_3_contents">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div id="Special_4" class="Specialist_cont" style="float:left;">
+                                <a id="Special_4_link" href="/view2?No=26">
+                                    <div id="Special_4_img" class="special_img" align="center">
+                                        <img id="Special4imgsrc" src="http://13.209.50.190/Archive_Images/2-03LH26092020LYLKMS0018.jpg"></div>
+                                    <div id="Special_4_txt" class="special_text">
+                                        <div class="Special_Title" id="Special_4_title">국군보안사령부 제 5588부대 준공기념물</div>
+                                        <div class="Special_Contents" id="Special_4_contents">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -468,6 +526,7 @@
         </div>
         <script>
             $(".number2").css("display","none");
+            $(".Special_2").css("display","none");
             $(".menu1").click(function() {
                 $(".number2").css("display","none");
                 $(".number1").css("display","block");
@@ -484,7 +543,22 @@
                 $(this).css("font-weight", "800");
                 $(this).css("color", "black");
             });
-
+            $(".Special1").click(function() {
+                $(".Special_2").css("display","none");
+                $(".Special_1").css("display","block");
+                $(".menuLinks").css("font-weight", "500");
+                $(".menuLinks").css("color", "#3F9EBD");
+                $(this).css("font-weight", "800");
+                $(this).css("color", "black");
+            });
+            $(".Special2").click(function() {
+                $(".Special_1").css("display","none");
+                $(".Special_2").css("display","block");
+                $(".menuLinks").css("font-weight", "500");
+                $(".menuLinks").css("color", "#3F9EBD");
+                $(this).css("font-weight", "800");
+                $(this).css("color", "black");
+            });
         </script>
     </div>
 
