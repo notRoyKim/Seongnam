@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
@@ -21,12 +22,14 @@ public class MainController {
     public ModelAndView base(HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("Main/Base");
+        HttpSession session = request.getSession();
 
         List<Main_Rand_Slide> viewDataList = mainService.getMainRandSlide();
 
         mv.addObject("viewDataList",viewDataList);
         return mv;
     }
+
     //11/18 시연회용
     @RequestMapping(value = "/Intro", method = RequestMethod.GET)
     public  ModelAndView Intro(HttpServletRequest request) throws Exception {
