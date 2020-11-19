@@ -1,6 +1,5 @@
 package com.CICS.Seongnam.Controller.DispatcherCont.Search;
 
-import com.CICS.Seongnam.Domain.Main_Rand_Slide;
 import com.CICS.Seongnam.Domain.Search_Result;
 import com.CICS.Seongnam.Service.Search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,7 @@ import java.util.List;
 
 @Controller
 public class SearchController {
+
     @Autowired
     SearchService searchService;
 
