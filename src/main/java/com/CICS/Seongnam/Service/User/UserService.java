@@ -10,7 +10,7 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
-    public Map<String, Object> loginUser(String ID, String PW) throws Exception {
+    public String loginUser(String ID, String PW) throws Exception {
 
         Map<String, Object> sqlParam = new HashMap<>();
 

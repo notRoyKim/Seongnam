@@ -6,5 +6,5 @@ import java.util.Map;
 public interface UserMapper {
 
     @Select("SELECT ID FROM USER WHERE ID = #{ID} AND PW =#{PW}")
-    Map<String, Object> loginUser(Map<String, Object> sqlParam);
+    String loginUser(Map<String, Object> sqlParam);
 }

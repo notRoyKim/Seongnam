@@ -20,7 +20,7 @@ public class SearchController {
     SearchService searchService;
 
     @RequestMapping(value = "/SearchResult", method = RequestMethod.GET)
-    public ModelAndView base(HttpServletRequest request) throws Exception {
+    public ModelAndView searchResult(HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView();
         HttpSession session = request.getSession();
 
