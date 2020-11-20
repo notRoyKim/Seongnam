@@ -7,6 +7,6 @@ import java.util.Map;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT ID FROM USER WHERE ID = ${ID} AND PW = password(${PW})")
+    @Select("SELECT ID FROM User WHERE ID = ${ID} AND PW = password(${PW})")
     String loginUser(Map<String, Object> sqlParam);
 }

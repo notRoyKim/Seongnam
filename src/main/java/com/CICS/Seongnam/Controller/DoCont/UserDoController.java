@@ -20,8 +20,7 @@ public class UserDoController {
 
     @RequestMapping(value = "/login_process", method = RequestMethod.POST)
     public ModelAndView login_Process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("Main/Base");
+        ModelAndView mv = new ModelAndView("redirect:/");
 
         try {
             HttpSession session = request.getSession();
@@ -29,14 +28,15 @@ public class UserDoController {
             String ID = request.getParameter("ID");
             String PW = request.getParameter("PW");
 
-
             String userInfo = userService.loginUser(ID, PW);
 
-            if(userInfo != null) {
+            System.out.println(userInfo);
+
+            if(userInfo != "") {
                 session.setAttribute("ID",userInfo);
                 mv.addObject("session", session);
 
-                return new ModelAndView("redirect:/");
+                return mv;
             }
             else {
                 ModelAndView modelAndView = new ModelAndView("redirect:/");
@@ -52,14 +52,15 @@ public class UserDoController {
 
         }
         catch (Exception e) {
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter out_equals = response.getWriter();
 
-            out_equals.println("<script>alert('ERROR 500');location.href='/network_login';</script>");
-
-            out_equals.flush();
-            return new ModelAndView("redirect:/");
         }
 
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out_equals = response.getWriter();
+
+        out_equals.println("<script>alert('ERROR 500'); window.location.href='/';</script>");
+
+        out_equals.flush();
+        return new ModelAndView();
     }
 }
