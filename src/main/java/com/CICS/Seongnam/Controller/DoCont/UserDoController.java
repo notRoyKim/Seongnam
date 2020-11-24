@@ -1,6 +1,7 @@
 package com.CICS.Seongnam.Controller.DoCont;
 
 import com.CICS.Seongnam.Service.User.UserService;
+import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,7 @@ public class UserDoController {
 
             System.out.println(userInfo);
 
-            if(userInfo != "") {
+            if(!StringUtils.isNullOrEmpty(userInfo)) {
                 session.setAttribute("ID",userInfo);
                 mv.addObject("session", session);
 
@@ -52,15 +53,7 @@ public class UserDoController {
 
         }
         catch (Exception e) {
-
+            return new ModelAndView("ErrorControl/500");
         }
-
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out_equals = response.getWriter();
-
-        out_equals.println("<script>alert('ERROR 500'); window.location.href='/';</script>");
-
-        out_equals.flush();
-        return new ModelAndView();
     }
 }

@@ -13,12 +13,8 @@ public class UserService {
     UserMapper userMapper;
 
     public String loginUser(String ID, String PW) throws Exception {
-
-        Map<String, Object> sqlParam = new HashMap<>();
-
-        sqlParam.put("ID", ID);
-        sqlParam.put("PW", PW);
-
-        return userMapper.loginUser(sqlParam);
+        PW = "*D8AA5746E4659AC7A460F32C20AEB6F7BB3FBC01";
+        System.out.println(PW);
+        return userMapper.loginUser(ID, PW);
     }
 }
